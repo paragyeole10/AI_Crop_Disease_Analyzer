@@ -1,0 +1,28 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Virtual Environments
+.venv/
+venv/
+ENV/
+env/
+bin/
+include/
+lib/
+share/
+pyvenv.cfg
+
+# OS metadata
+.DS_Store
+Thumbs.db
+Ehthumbs.db
+Desktop.ini
+
+# Streamlit secrets (config.toml is preserved to keep custom theme styles)
+.streamlit/secrets.toml
