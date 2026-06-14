@@ -1,0 +1,12 @@
+Metadata-Version: 2.4
+Name: agrivision_ai
+Version: 1.0.0
+Summary: AgriVision AI Core ML and Preprocessing Library
+Requires-Dist: tensorflow
+Requires-Dist: numpy
+Requires-Dist: opencv-python-headless
+Requires-Dist: pillow
+Requires-Dist: scikit-learn
+Requires-Dist: matplotlib
+Dynamic: requires-dist
+Dynamic: summary

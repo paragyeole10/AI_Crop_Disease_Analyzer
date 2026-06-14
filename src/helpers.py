@@ -1,12 +1,14 @@
 import os
 import json
+from src.config import load_config, get_absolute_path
 
 def load_knowledge_base():
     """
-    Load the disease information JSON database.
+    Load the disease information JSON database using the path configured in config.yaml.
     """
-    base_dir = os.path.dirname(os.path.dirname(__file__))
-    kb_path = os.path.join(base_dir, "knowledge_base", "disease_info.json")
+    config = load_config()
+    rel_path = config.get("paths", {}).get("knowledge_base", "knowledge_base/disease_info.json")
+    kb_path = get_absolute_path(rel_path)
     
     if not os.path.exists(kb_path):
         raise FileNotFoundError(f"Knowledge base not found at {kb_path}")

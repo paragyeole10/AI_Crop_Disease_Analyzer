@@ -1,0 +1,26 @@
+# AgriVision AI Global Configuration File
+
+dataset:
+  path: "d:\\Uma_Tai\\archive (3)\\PlantVillage"
+  validation_split: 0.15
+  test_split: 0.15
+  random_state: 42
+
+model:
+  name: "MobileNetV2"
+  weights: "imagenet"
+  input_shape: [224, 224, 3]
+  dropout_rate: 0.2
+  save_path: "models/crop_disease_model.h5"
+
+training:
+  epochs: 2
+  batch_size: 32
+  learning_rate: 0.001
+  quick_mode: true
+  max_samples: 100
+
+paths:
+  knowledge_base: "knowledge_base/disease_info.json"
+  metrics_json: "assets/model_metrics.json"
+  plots_dir: "assets/images"

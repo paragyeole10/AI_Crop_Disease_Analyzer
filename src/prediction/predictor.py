@@ -1,12 +1,14 @@
 import os
 import tensorflow as tf
 import numpy as np
+from src.config import load_config, get_absolute_path
 
 class CropDiseasePredictor:
     def __init__(self, model_path=None):
         if model_path is None:
-            # Default location
-            self.model_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "models", "crop_disease_model.h5")
+            config = load_config()
+            rel_path = config.get("model", {}).get("save_path", "models/crop_disease_model.h5")
+            self.model_path = get_absolute_path(rel_path)
         else:
             self.model_path = model_path
             
@@ -36,7 +38,7 @@ class CropDiseasePredictor:
             if not os.path.exists(self.model_path):
                 raise FileNotFoundError(
                     f"Model file not found at {self.model_path}. "
-                    "Please run train.py first to train the model."
+                    "Please run the training pipeline first to train the model."
                 )
             # load_model with compile=False avoids needing to specify custom loss/optimizer configs
             self.model = tf.keras.models.load_model(self.model_path, compile=False)
