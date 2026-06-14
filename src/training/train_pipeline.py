@@ -121,27 +121,89 @@ def run_training(dataset_path=None, epochs=None, batch_size=None, quick_mode=Non
     model.summary()
     
     # 4. Train Model
-    print("\n[4/4] Training model classification head...")
+    print("\n[4/4] Stage 1 - Training classification head (Frozen Base)...")
     start_train_time = time.time()
     
-    history = model.fit(
-        X_train, y_train,
-        validation_data=(X_val, y_val),
-        epochs=epochs,
-        batch_size=batch_size,
+    stage1_epochs = min(5, epochs)
+    stage2_epochs = max(0, epochs - stage1_epochs)
+    
+    # Setup callbacks
+    checkpoint_cb = tf.keras.callbacks.ModelCheckpoint(
+        filepath=save_path,
+        monitor='val_loss',
+        save_best_only=True,
+        verbose=1
+    )
+    early_stop_cb = tf.keras.callbacks.EarlyStopping(
+        monitor='val_loss',
+        patience=4,
+        restore_best_weights=True,
+        verbose=1
+    )
+    reduce_lr_cb = tf.keras.callbacks.ReduceLROnPlateau(
+        monitor='val_loss',
+        factor=0.5,
+        patience=2,
+        min_lr=1e-6,
         verbose=1
     )
     
+    # Train stage 1
+    history = model.fit(
+        X_train, y_train,
+        validation_data=(X_val, y_val),
+        epochs=stage1_epochs,
+        batch_size=batch_size,
+        callbacks=[checkpoint_cb, reduce_lr_cb],
+        verbose=1
+    )
+    
+    # Stage 2: Fine-Tuning
+    if stage2_epochs > 0:
+        print("\nStage 2 - Fine-Tuning top base model layers (Unfrozen from layer 100 onwards)...")
+        # Unfreeze MobileNetV2 base
+        base_model.trainable = True
+        # Freeze initial layers to retain basic feature extractors
+        for layer in base_model.layers[:100]:
+            layer.trainable = False
+            
+        # Compile with a very low learning rate for fine-tuning
+        model.compile(
+            optimizer=tf.keras.optimizers.Adam(learning_rate=1e-5),
+            loss='sparse_categorical_crossentropy',
+            metrics=['accuracy']
+        )
+        
+        model.summary()
+        
+        # Fit Stage 2
+        history2 = model.fit(
+            X_train, y_train,
+            validation_data=(X_val, y_val),
+            epochs=stage2_epochs,
+            batch_size=batch_size,
+            callbacks=[checkpoint_cb, early_stop_cb, reduce_lr_cb],
+            verbose=1
+        )
+        
+        # Merge history dictionary lists
+        for key in history.history.keys():
+            if key in history2.history:
+                history.history[key].extend(history2.history[key])
+                
     training_duration = time.time() - start_train_time
     print(f"Training completed in {training_duration:.2f} seconds.")
     
-    # Save Model
-    os.makedirs(os.path.dirname(save_path), exist_ok=True)
-    print(f"Saving model to {save_path}...")
-    model.save(save_path)
-    print("Model saved successfully.")
+    # Load the absolute best saved model weights from disk for final evaluation
+    print(f"\nLoading best saved model weights from {save_path} for final evaluation split...")
+    best_model = tf.keras.models.load_model(save_path, compile=False)
+    best_model.compile(
+        optimizer=tf.keras.optimizers.Adam(learning_rate=1e-5),
+        loss='sparse_categorical_crossentropy',
+        metrics=['accuracy']
+    )
     
-    return model, history, (X_test, y_test), all_dirs, training_duration
+    return best_model, history, (X_test, y_test), all_dirs, training_duration
 
 if __name__ == "__main__":
     run_training()

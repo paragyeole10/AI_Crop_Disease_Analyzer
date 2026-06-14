@@ -14,11 +14,11 @@ model:
   save_path: "models/crop_disease_model.h5"
 
 training:
-  epochs: 2
+  epochs: 15
   batch_size: 32
   learning_rate: 0.001
   quick_mode: true
-  max_samples: 100
+  max_samples: 500
 
 paths:
   knowledge_base: "knowledge_base/disease_info.json"

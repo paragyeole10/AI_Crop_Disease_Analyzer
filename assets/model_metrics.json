@@ -1,11 +1,11 @@
 {
-  "accuracy": 0.6666666865348816,
-  "precision": 0.7071852221852223,
-  "recall": 0.6666666666666666,
-  "f1_score": 0.6611952501121332,
-  "test_loss": 1.2668691873550415,
-  "epochs_trained": 2,
-  "training_time_seconds": 22.04523253440857,
+  "accuracy": 0.7928994297981262,
+  "precision": 0.8142882945188383,
+  "recall": 0.7928994082840237,
+  "f1_score": 0.7914767433407593,
+  "test_loss": 0.6956163644790649,
+  "epochs_trained": 6,
+  "training_time_seconds": 121.60095834732056,
   "num_classes": 15,
   "classes_list": [
     "Pepper__bell___Bacterial_spot",
