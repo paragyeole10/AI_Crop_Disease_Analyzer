@@ -579,22 +579,20 @@ elif page == "🔬 Scan Leaf":
                                         img_html = f'<img src="data:image/png;base64,{img_base64}" style="width: 65px; height: 65px; border-radius: 8px; object-fit: cover;" />'
                                     else:
                                         img_html = f'<span style="font-size: 2.2rem;">{prod["image"]}</span>'
-                                    st.markdown(f"""
-                                    <div style="background: #F8FAF8; border: 1px solid #E2E8F0; border-radius: 12px; padding: 1.25rem; margin-bottom: 1rem;">
-                                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
-                                            {img_html}
-                                            <div>
-                                                <h4 style="margin: 0; color: #1E293B;">{prod['name']}</h4>
-                                                <span style="font-size: 0.8rem; background: #E2E8F0; color: #475569; padding: 0.15rem 0.5rem; border-radius: 12px; font-weight: 600;">{prod['category']}</span>
-                                            </div>
-                                        </div>
-                                        <p style="font-size: 0.9rem; color: #475569; margin-bottom: 0.75rem;">{prod['description']}</p>
-                                        <div style="display: flex; justify-content: space-between; align-items: center;">
-                                            <span style="font-size: 1.15rem; font-weight: 700; color: #2E7D32;">${prod['price']:.2f}</span>
-                                            <span style="font-size: 0.85rem; color: #F59E0B; font-weight: 600;">⭐ {prod['rating']} / 5.0</span>
-                                        </div>
-                                    </div>
-                                    """, unsafe_allow_html=True)
+                                    st.markdown(f"""<div style="background: #F8FAF8; border: 1px solid #E2E8F0; border-radius: 12px; padding: 1.25rem; margin-bottom: 1rem;">
+<div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
+{img_html}
+<div>
+<h4 style="margin: 0; color: #1E293B;">{prod['name']}</h4>
+<span style="font-size: 0.8rem; background: #E2E8F0; color: #475569; padding: 0.15rem 0.5rem; border-radius: 12px; font-weight: 600;">{prod['category']}</span>
+</div>
+</div>
+<p style="font-size: 0.9rem; color: #475569; margin-bottom: 0.75rem;">{prod['description']}</p>
+<div style="display: flex; justify-content: space-between; align-items: center;">
+<span style="font-size: 1.15rem; font-weight: 700; color: #2E7D32;">${prod['price']:.2f}</span>
+<span style="font-size: 0.85rem; color: #F59E0B; font-weight: 600;">⭐ {prod['rating']} / 5.0</span>
+</div>
+</div>""", unsafe_allow_html=True)
                                     
                                     btn_col1, btn_col2 = st.columns([1, 1])
                                     with btn_col1:
@@ -681,22 +679,20 @@ elif page == "📚 Disease Library":
                             img_html = f'<img src="data:image/png;base64,{img_base64}" style="width: 65px; height: 65px; border-radius: 8px; object-fit: cover;" />'
                         else:
                             img_html = f'<span style="font-size: 2.2rem;">{prod["image"]}</span>'
-                        st.markdown(f"""
-                        <div style="background: #F8FAF8; border: 1px solid #E2E8F0; border-radius: 12px; padding: 1.25rem; margin-bottom: 1rem;">
-                            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
-                                {img_html}
-                                <div>
-                                    <h4 style="margin: 0; color: #1E293B;">{prod['name']}</h4>
-                                    <span style="font-size: 0.8rem; background: #E2E8F0; color: #475569; padding: 0.15rem 0.5rem; border-radius: 12px; font-weight: 600;">{prod['category']}</span>
-                                </div>
-                            </div>
-                            <p style="font-size: 0.9rem; color: #475569; margin-bottom: 0.75rem;">{prod['description']}</p>
-                            <div style="display: flex; justify-content: space-between; align-items: center;">
-                                <span style="font-size: 1.15rem; font-weight: 700; color: #2E7D32;">${prod['price']:.2f}</span>
-                                <span style="font-size: 0.85rem; color: #F59E0B; font-weight: 600;">⭐ {prod['rating']} / 5.0</span>
-                            </div>
-                        </div>
-                        """, unsafe_allow_html=True)
+                        st.markdown(f"""<div style="background: #F8FAF8; border: 1px solid #E2E8F0; border-radius: 12px; padding: 1.25rem; margin-bottom: 1rem;">
+<div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
+{img_html}
+<div>
+<h4 style="margin: 0; color: #1E293B;">{prod['name']}</h4>
+<span style="font-size: 0.8rem; background: #E2E8F0; color: #475569; padding: 0.15rem 0.5rem; border-radius: 12px; font-weight: 600;">{prod['category']}</span>
+</div>
+</div>
+<p style="font-size: 0.9rem; color: #475569; margin-bottom: 0.75rem;">{prod['description']}</p>
+<div style="display: flex; justify-content: space-between; align-items: center;">
+<span style="font-size: 1.15rem; font-weight: 700; color: #2E7D32;">${prod['price']:.2f}</span>
+<span style="font-size: 0.85rem; color: #F59E0B; font-weight: 600;">⭐ {prod['rating']} / 5.0</span>
+</div>
+</div>""", unsafe_allow_html=True)
                         
                         btn_col1, btn_col2 = st.columns([1, 1])
                         with btn_col1:
@@ -951,24 +947,22 @@ elif page == "🛒 Marketplace":
                         else:
                             img_html = f'<span style="font-size: 2.5rem; display: block; margin-bottom: 0.5rem;">{prod["image"]}</span>'
                         
-                        st.markdown(f"""
-                        <div style="background: white; border: 1px solid {'#2E7D32' if is_rec else '#E2E8F0'}; border-radius: 12px; padding: 1.25rem; margin-bottom: 1rem; position: relative; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); min-height: 330px; display: flex; flex-direction: column; justify-content: space-between;">
-                            {rec_badge}
-                            <div>
-                                {img_html}
-                                <span style="font-size: 0.8rem; background: #E2E8F0; color: #475569; padding: 0.15rem 0.5rem; border-radius: 12px; font-weight: 600;">{prod['category']}</span>
-                                <h4 style="margin: 0.5rem 0 0.25rem 0; color: #1E293B; font-size: 1.05rem;">{prod['name']}</h4>
-                                <p style="font-size: 0.85rem; color: #64748B; line-height: 1.3; min-height: 3.5rem;">{prod['description']}</p>
-                                <div style="font-size: 0.8rem; color: #475569; margin-bottom: 0.5rem;"><b>Suitable for:</b> {prod['suitability']}</div>
-                            </div>
-                            <div>
-                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
-                                    <span style="font-size: 1.25rem; font-weight: 800; color: #2E7D32;">${prod['price']:.2f}</span>
-                                    <span style="font-size: 0.85rem; color: #F59E0B; font-weight: 600;">⭐ {prod['rating']}</span>
-                                </div>
-                            </div>
-                        </div>
-                        """, unsafe_allow_html=True)
+                        st.markdown(f"""<div style="background: white; border: 1px solid {'#2E7D32' if is_rec else '#E2E8F0'}; border-radius: 12px; padding: 1.25rem; margin-bottom: 1rem; position: relative; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); min-height: 330px; display: flex; flex-direction: column; justify-content: space-between;">
+{rec_badge}
+<div>
+{img_html}
+<span style="font-size: 0.8rem; background: #E2E8F0; color: #475569; padding: 0.15rem 0.5rem; border-radius: 12px; font-weight: 600;">{prod['category']}</span>
+<h4 style="margin: 0.5rem 0 0.25rem 0; color: #1E293B; font-size: 1.05rem;">{prod['name']}</h4>
+<p style="font-size: 0.85rem; color: #64748B; line-height: 1.3; min-height: 3.5rem;">{prod['description']}</p>
+<div style="font-size: 0.8rem; color: #475569; margin-bottom: 0.5rem;"><b>Suitable for:</b> {prod['suitability']}</div>
+</div>
+<div>
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
+<span style="font-size: 1.25rem; font-weight: 800; color: #2E7D32;">${prod['price']:.2f}</span>
+<span style="font-size: 0.85rem; color: #F59E0B; font-weight: 600;">⭐ {prod['rating']}</span>
+</div>
+</div>
+</div>""", unsafe_allow_html=True)
                         
                         ac_col1, ac_col2 = st.columns(2)
                         with ac_col1:
