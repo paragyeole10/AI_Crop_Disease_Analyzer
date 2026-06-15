@@ -33,16 +33,18 @@ def get_base64_image(image_path):
         pass
     return ""
 
-st.markdown("## 🔬 Crop Disease Scanner")
-st.markdown("Upload a crop leaf image (Tomato, Potato, or Pepper Bell) to identify diseases and load medical treatments.")
+from src.translations import t
+
+st.markdown(f"## {t('scan_title')}")
+st.markdown(t('scan_subtitle'))
 
 if not model_exists:
-    st.error("❌ **AI Inference Engine Offline**: The file `models/crop_disease_model.h5` is missing. You must run the training script (`train.py`) first to generate the model before scanning leaves.")
+    st.error(t('model_offline'))
 else:
     uploaded_file = st.file_uploader(
-        "Choose a crop leaf image...", 
+        t('choose_image'), 
         type=["jpg", "jpeg", "png"],
-        help="Supported formats: JPG, JPEG, PNG"
+        help=t('image_help')
     )
     
     if uploaded_file is not None:
@@ -50,10 +52,10 @@ else:
         
         with col_img:
             image = Image.open(uploaded_file)
-            st.image(image, caption="Uploaded Crop Leaf", use_container_width=True)
+            st.image(image, caption=t('uploaded_caption'), use_container_width=True)
             
         with col_res:
-            with st.spinner("Analyzing leaf patterns..."):
+            with st.spinner(t('analyzing')):
                 try:
                     # Preprocess and predict
                     preprocessed = preprocess_image(uploaded_file)
@@ -71,50 +73,50 @@ else:
                     
                     is_healthy = "healthy" in predicted_class.lower()
                     badge_class = "badge-healthy" if is_healthy else "badge-diseased"
-                    badge_text = "HEALTHY" if is_healthy else "DISEASED / PATTERN DETECTED"
+                    badge_text = t('status_healthy') if is_healthy else t('status_diseased')
                     
                     # Display results dashboard
                     st.markdown(f"""<div class="result-card">
 <span class="status-badge {badge_class}">{badge_text}</span>
-<div class="metric-label">Identified Crop Condition</div>
+<div class="metric-label">{t('identified_condition')}</div>
 <div class="metric-value" style="color: {'#2E7D32' if is_healthy else '#C62828'}; margin-bottom:1rem;">{details['disease_name']}</div>
 </div>""", unsafe_allow_html=True)
                     
                     # Confidence score progress
-                    st.markdown(f"**Confidence Level**: `{confidence*100:.2f}%`")
+                    st.markdown(f"**{t('confidence_level')}**: `{confidence*100:.2f}%`")
                     st.progress(confidence)
                     
                     # Detail tabs
                     st.markdown("---")
                     tab_desc, tab_sym, tab_treat, tab_prev, tab_shop = st.tabs([
-                        "ℹ️ Disease Info", 
-                        "🔍 Symptoms", 
-                        "💊 Recommended Treatment", 
-                        "🛡️ Prevention Tips",
-                        "🛒 Shop Treatments"
+                        t('tab_info'), 
+                        t('tab_symptoms'), 
+                        t('tab_treatment'), 
+                        t('tab_prevention'),
+                        t('tab_shop')
                     ])
                     
                     with tab_desc:
-                        st.markdown(f"**Description**:\n{details['description']}")
+                        st.markdown(f"**{t('desc_label')}**:\n{details['description']}")
                         
                     with tab_sym:
-                        st.markdown("### Symptoms to Look For")
+                        st.markdown(f"### {t('symptoms_look_for')}")
                         for symptom in details.get('symptoms', []):
                             st.markdown(f"- {symptom}")
                             
                     with tab_treat:
-                        st.markdown("### Recommended Actionable Treatment")
+                        st.markdown(f"### {t('recommended_treatment')}")
                         for idx, treat in enumerate(details.get('treatment', [])):
                             st.markdown(f"**{idx + 1}.** {treat}")
                             
                     with tab_prev:
-                        st.markdown("### Preventative Strategies")
+                        st.markdown(f"### {t('preventative_strategies')}")
                         for idx, prev in enumerate(details.get('prevention', [])):
                             st.markdown(f"**{idx + 1}.** {prev}")
                             
                     with tab_shop:
-                        st.markdown("### 🛒 Recommended Products for this Condition")
-                        st.markdown("These products are available in the AgriVision Marketplace to treat this condition:")
+                        st.markdown(f"### {t('recommended_products_title')}")
+                        st.markdown(t('recommended_products_subtitle'))
                         
                         recs = get_recommended_products(predicted_class)
                         for prod in recs:
@@ -142,11 +144,11 @@ else:
                                 
                                 btn_col1, btn_col2 = st.columns([1, 1])
                                 with btn_col1:
-                                    if st.button(f"Add to Cart", key=f"add_cart_scan_{prod['id']}"):
+                                    if st.button(t('add_to_cart'), key=f"add_cart_scan_{prod['id']}", use_container_width=True):
                                         st.session_state.cart[prod['id']] = st.session_state.cart.get(prod['id'], 0) + 1
-                                        st.toast(f"Added {prod['name']} to cart!")
+                                        st.toast(t('added_to_cart_toast').format(prod['name']))
                                 with btn_col2:
-                                    if st.button(f"Buy Now", key=f"buy_now_scan_{prod['id']}"):
+                                    if st.button(t('buy_now'), key=f"buy_now_scan_{prod['id']}", use_container_width=True):
                                         st.session_state.cart[prod['id']] = st.session_state.cart.get(prod['id'], 0) + 1
                                         st.session_state.checkout_step = "checkout"
                                         st.switch_page("pages/3_🛒_Marketplace.py")

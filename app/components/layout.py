@@ -319,6 +319,84 @@ def inject_custom_css():
         .stepper-item.completed .step-name {
             color: #1E293B;
         }
+        
+        /* Responsive Mobile Adjustments */
+        @media (max-width: 768px) {
+            .block-container {
+                padding-top: 1rem !important;
+                padding-bottom: 1rem !important;
+                padding-left: 0.75rem !important;
+                padding-right: 0.75rem !important;
+            }
+            .hero-container {
+                padding: 1.5rem 1.25rem !important;
+                margin-bottom: 1.5rem !important;
+            }
+            .hero-title {
+                font-size: 2rem !important;
+            }
+            .hero-subtitle {
+                font-size: 0.95rem !important;
+            }
+            .result-card {
+                padding: 1.25rem !important;
+                margin-bottom: 1rem !important;
+            }
+            .metric-value {
+                font-size: 1.75rem !important;
+            }
+            
+            /* Responsive Stepper Timeline */
+            .stepper-wrapper {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 1.5rem !important;
+                margin: 1.5rem 0 !important;
+                padding-left: 0.5rem !important;
+            }
+            .stepper-item {
+                display: flex !important;
+                align-items: center !important;
+                gap: 1.25rem !important;
+                text-align: left !important;
+                width: 100% !important;
+                position: relative !important;
+            }
+            .stepper-item::before {
+                position: absolute !important;
+                content: '' !important;
+                border-left: 3px solid #E2E8F0 !important;
+                border-bottom: none !important;
+                width: 3px !important;
+                height: 1.5rem !important;
+                top: -1.5rem !important;
+                left: 20px !important;
+                z-index: -1 !important;
+            }
+            .stepper-item:first-child::before {
+                content: none !important;
+            }
+            .stepper-item.completed::before {
+                border-left: 3px solid #2E7D32 !important;
+                border-bottom: none !important;
+            }
+            .stepper-item .step-counter {
+                margin: 0 !important;
+                flex-shrink: 0 !important;
+            }
+            .stepper-item .step-name {
+                font-size: 0.9rem !important;
+            }
+            
+            /* Compact Tab layout for mobile */
+            div[data-baseweb="tab-list"] {
+                gap: 8px !important;
+            }
+            div[data-baseweb="tab"] {
+                padding: 6px 10px !important;
+                font-size: 0.85rem !important;
+            }
+        }
     </style>
     """, unsafe_allow_html=True)
 
@@ -326,19 +404,39 @@ def render_sidebar_branding():
     """
     Renders the sidebar branding elements.
     """
+    from src.translations import t
+    
     with st.sidebar:
         logo_path = os.path.normpath(os.path.join(os.path.dirname(os.path.dirname(__file__)), "assets", "logo.png"))
         if os.path.exists(logo_path):
             st.image(logo_path, width=80)
         else:
             st.image("https://img.icons8.com/color/96/000000/sprout.png", width=80)
-        st.markdown("<h2 style='margin-top:0;'>AgriVision AI</h2>", unsafe_allow_html=True)
-        st.markdown("<p style='color: #64748B; font-size: 0.9rem;'>Smart Crop Health Intelligence</p>", unsafe_allow_html=True)
+        st.markdown(f"<h2 style='margin-top:0;'>{t('app_title')}</h2>", unsafe_allow_html=True)
+        st.markdown(f"<p style='color: #64748B; font-size: 0.9rem;'>{t('app_subtitle')}</p>", unsafe_allow_html=True)
+        
+        # Language Selector
+        langs = ["en", "hi", "es"]
+        lang_labels = {"en": "English", "hi": "हिन्दी (Hindi)", "es": "Español (Spanish)"}
+        selected_lang_idx = langs.index(st.session_state.get("language", "en"))
+        
+        lang_choice = st.selectbox(
+            "🌐 Language / भाषा / Idioma",
+            options=langs,
+            index=selected_lang_idx,
+            format_func=lambda x: lang_labels[x],
+            key="language_selector"
+        )
+        
+        if lang_choice != st.session_state.get("language", "en"):
+            st.session_state.language = lang_choice
+            st.rerun()
+            
         st.markdown("---")
         
-        st.markdown("### Supported Crops")
-        st.markdown("- 🍅 Tomato (11 classes)")
-        st.markdown("- 🥔 Potato (3 classes)")
-        st.markdown("- 🫑 Pepper Bell (2 classes)")
+        st.markdown(f"### {t('supported_crops')}")
+        st.markdown(f"- {t('crop_tomato')}")
+        st.markdown(f"- {t('crop_potato')}")
+        st.markdown(f"- {t('crop_pepper')}")
         
-        st.markdown("<div style='position: fixed; bottom: 10px; font-size: 0.8rem; color: #94A3B8;'>Phase 1 - Release v1.0.0</div>", unsafe_allow_html=True)
+        st.markdown(f"<div style='position: fixed; bottom: 10px; font-size: 0.8rem; color: #94A3B8;'>{t('release_version')}</div>", unsafe_allow_html=True)

@@ -20,28 +20,41 @@ def get_base64_image(image_path):
         pass
     return ""
 
-st.markdown("## 📚 Agricultural Disease Library")
-st.markdown("Browse crop health profiles, diagnostic guides, and treatment procedures for all supported categories.")
+from src.translations import t
+
+st.markdown(f"## {t('lib_title')}")
+st.markdown(t('lib_subtitle'))
 
 try:
     kb = load_knowledge_base()
     
     # Crop filter
-    crop_filter = st.selectbox("Filter by Crop Category", ["All Crops", "Tomato 🍅", "Potato 🥔", "Pepper Bell 🫑"])
+    crops_options = ["All", "Tomato", "Potato", "Pepper"]
+    crops_labels = {
+        "All": t('all_crops'),
+        "Tomato": t('crop_tomato_opt'),
+        "Potato": t('crop_potato_opt'),
+        "Pepper": t('crop_pepper_opt')
+    }
+    crop_filter = st.selectbox(
+        t('filter_crop'), 
+        options=crops_options,
+        format_func=lambda x: crops_labels[x]
+    )
     
     # Filter classes
     filtered_classes = {}
     for k, v in kb.items():
-        if crop_filter == "Tomato 🍅" and "tomato" not in k.lower():
+        if crop_filter == "Tomato" and "tomato" not in k.lower():
             continue
-        elif crop_filter == "Potato 🥔" and "potato" not in k.lower():
+        elif crop_filter == "Potato" and "potato" not in k.lower():
             continue
-        elif crop_filter == "Pepper Bell 🫑" and "pepper" not in k.lower():
+        elif crop_filter == "Pepper" and "pepper" not in k.lower():
             continue
         filtered_classes[k] = v
         
     class_choice = st.selectbox(
-        "Select a condition profile to examine:",
+        t('select_profile'),
         options=list(filtered_classes.keys()),
         format_func=lambda x: filtered_classes[x]['disease_name']
     )
@@ -51,32 +64,33 @@ try:
         is_healthy = "healthy" in class_choice.lower()
         
         st.markdown("---")
-        lib_tab_profile, lib_tab_shop = st.tabs(["📋 Disease Profile", "🛒 Shop Recommended Products"])
+        lib_tab_profile, lib_tab_shop = st.tabs([t('tab_profile'), t('tab_shop_recs')])
         
         with lib_tab_profile:
             col_info, col_bullets = st.columns([1.2, 1])
             
             with col_info:
                 st.subheader(profile['disease_name'])
-                st.markdown(f"**Condition Status**: `{'Healthy' if is_healthy else 'Diseased'}`")
-                st.markdown(f"**Description**:\n{profile['description']}")
+                status_lbl = t('status_healthy_lbl') if is_healthy else t('status_diseased_lbl')
+                st.markdown(f"**{t('condition_status')}**: `{status_lbl}`")
+                st.markdown(f"**{t('description_lbl')}**:\n{profile['description']}")
                 
-                st.markdown("<br><h4>🛡️ Preventative Measures</h4>", unsafe_allow_html=True)
+                st.markdown(f"<br><h4>{t('preventative_measures_lbl')}</h4>", unsafe_allow_html=True)
                 for idx, prev in enumerate(profile.get('prevention', [])):
                     st.markdown(f"**{idx+1}.** {prev}")
                     
             with col_bullets:
-                st.markdown("<h4>🔍 Symptoms</h4>", unsafe_allow_html=True)
+                st.markdown(f"<h4>{t('symptoms_lbl')}</h4>", unsafe_allow_html=True)
                 for symptom in profile.get('symptoms', []):
                     st.markdown(f"- {symptom}")
                     
-                st.markdown("<br><h4>💊 Recommended Treatments</h4>", unsafe_allow_html=True)
+                st.markdown(f"<br><h4>{t('recommended_treatments_lbl')}</h4>", unsafe_allow_html=True)
                 for idx, treat in enumerate(profile.get('treatment', [])):
                     st.markdown(f"**{idx+1}.** {treat}")
                     
         with lib_tab_shop:
-            st.markdown("### 🛒 Recommended Products for this Condition")
-            st.markdown("These products are available in the AgriVision Marketplace to treat this condition:")
+            st.markdown(f"### {t('recommended_products_title')}")
+            st.markdown(t('recommended_products_subtitle'))
             
             recs = get_recommended_products(class_choice)
             for prod in recs:
@@ -104,11 +118,11 @@ try:
                     
                     btn_col1, btn_col2 = st.columns([1, 1])
                     with btn_col1:
-                        if st.button(f"Add to Cart", key=f"add_cart_lib_{prod['id']}"):
+                        if st.button(t('add_to_cart'), key=f"add_cart_lib_{prod['id']}", use_container_width=True):
                             st.session_state.cart[prod['id']] = st.session_state.cart.get(prod['id'], 0) + 1
-                            st.toast(f"Added {prod['name']} to cart!")
+                            st.toast(t('added_to_cart_toast').format(prod['name']))
                     with btn_col2:
-                        if st.button(f"Buy Now", key=f"buy_now_lib_{prod['id']}"):
+                        if st.button(t('buy_now'), key=f"buy_now_lib_{prod['id']}", use_container_width=True):
                             st.session_state.cart[prod['id']] = st.session_state.cart.get(prod['id'], 0) + 1
                             st.session_state.checkout_step = "checkout"
                             st.switch_page("pages/3_🛒_Marketplace.py")

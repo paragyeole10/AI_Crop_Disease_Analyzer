@@ -5,11 +5,27 @@ from src.config import load_config, get_absolute_path
 def load_knowledge_base():
     """
     Load the disease information JSON database using the path configured in config.yaml.
+    Support multilingual databases dynamically.
     """
     config = load_config()
     rel_path = config.get("paths", {}).get("knowledge_base", "knowledge_base/disease_info.json")
     kb_path = get_absolute_path(rel_path)
     
+    try:
+        import streamlit as st
+        lang = st.session_state.get("language", "en")
+    except Exception:
+        lang = "en"
+        
+    if lang == "hi":
+        loc_path = kb_path.replace("disease_info.json", "disease_info_hi.json")
+        if os.path.exists(loc_path):
+            kb_path = loc_path
+    elif lang == "es":
+        loc_path = kb_path.replace("disease_info.json", "disease_info_es.json")
+        if os.path.exists(loc_path):
+            kb_path = loc_path
+            
     if not os.path.exists(kb_path):
         raise FileNotFoundError(f"Knowledge base not found at {kb_path}")
         

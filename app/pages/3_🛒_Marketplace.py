@@ -8,6 +8,7 @@ import random
 import streamlit as st
 from src.config import load_config, get_absolute_path
 from src.marketplace import PRODUCTS, get_recommended_products, DISEASE_PRODUCT_MAPPING
+from src.translations import t
 
 def get_base64_image(image_path):
     """Convert a local product image to base64 string to embed in HTML."""
@@ -23,10 +24,10 @@ def get_base64_image(image_path):
 # Helper to render stepper
 def render_tracking_stepper(status_index):
     steps = [
-        {"name": "Order Placed", "icon": "📝"},
-        {"name": "Dispatched", "icon": "📦"},
-        {"name": "In Transit", "icon": "🚚"},
-        {"name": "Delivered", "icon": "🏡"}
+        {"name": t('stepper_placed'), "icon": "📝"},
+        {"name": t('stepper_dispatched'), "icon": "📦"},
+        {"name": t('stepper_transit'), "icon": "🚚"},
+        {"name": t('stepper_delivered'), "icon": "🏡"}
     ]
     
     html = '<div class="stepper-wrapper">'
@@ -44,17 +45,18 @@ def render_tracking_stepper(status_index):
     html += '</div>'
     st.markdown(html, unsafe_allow_html=True)
 
-st.markdown("## 🛒 AgriVision Crop Care Marketplace")
-st.markdown("Browse high-quality fertilizer, pest control, and soil restoration products customized for your crops.")
+st.markdown(f"## {t('market_title')}")
+st.markdown(t('market_subtitle'))
 
 # 2. Personalized Recommendations Banner
 if st.session_state.last_diagnosis:
     diag = st.session_state.last_diagnosis
+    banner_text = t('treatment_banner_text').format(diag['disease_name'])
     st.markdown(f"""<div class="recommendation-banner">
 <span style="font-size: 2.2rem;">💡</span>
 <div class="recommendation-banner-content">
-<div class="recommendation-banner-title">Personalized Treatment Available</div>
-<div class="recommendation-banner-text">Based on your recent scan showing <b>{diag['disease_name']}</b>, we recommend specific treatments below (marked with ⭐).</div>
+<div class="recommendation-banner-title">{t('treatment_banner_title')}</div>
+<div class="recommendation-banner-text">{banner_text}</div>
 </div>
 </div>""", unsafe_allow_html=True)
 
@@ -73,56 +75,65 @@ if st.session_state.checkout_step == "tracking":
             st.session_state.checkout_step = "cart"
             st.rerun()
     else:
-        st.success(f"🎉 Order {order['order_id']} placed successfully! Estimated delivery in 2-3 business days.")
+        st.success(t('order_success').format(order['order_id']))
         
-        st.markdown("### 🚚 Live Delivery Tracker")
+        st.markdown(f"### {t('live_tracker')}")
         st.markdown("Use the slider below to simulate the dispatch and delivery steps:")
         
+        stages_options = ["placed", "dispatched", "transit", "delivered"]
+        stages_labels = {
+            "placed": t('sim_placed'),
+            "dispatched": t('sim_dispatched'),
+            "transit": t('sim_transit'),
+            "delivered": t('sim_delivered')
+        }
+        
         simulated_step = st.select_slider(
-            "Simulation Stage",
-            options=["Order Placed 📝", "Dispatched from Depot 📦", "In Transit 🚚", "Delivered 🏡"],
-            value=["Order Placed 📝", "Dispatched from Depot 📦", "In Transit 🚚", "Delivered 🏡"][order['status_index']]
+            t('simulation_stage'),
+            options=stages_options,
+            value=stages_options[order['status_index']],
+            format_func=lambda x: stages_labels[x]
         )
         
         step_mapping = {
-            "Order Placed 📝": 0,
-            "Dispatched from Depot 📦": 1,
-            "In Transit 🚚": 2,
-            "Delivered 🏡": 3
+            "placed": 0,
+            "dispatched": 1,
+            "transit": 2,
+            "delivered": 3
         }
         order['status_index'] = step_mapping[simulated_step]
-        order['status'] = simulated_step
+        order['status'] = stages_labels[simulated_step]
         
         # Render stepper
         render_tracking_stepper(order['status_index'])
         
         # Display detailed delivery receipt
-        st.markdown("### 📄 Order Receipt")
+        st.markdown(f"### {t('receipt_title')}")
         col_r1, col_r2 = st.columns(2)
         with col_r1:
-            st.markdown(f"""**Customer Details**:
-- **Name**: {order['name']}
-- **Phone**: {order['phone']}
-- **Address**: {order['address']}
-- **Payment Method**: {order['payment_method']}""")
+            st.markdown(f"""**{t('customer_details')}**:
+- **{t('details_name')}**: {order['name']}
+- **{t('details_phone')}**: {order['phone']}
+- **{t('details_address')}**: {order['address']}
+- **{t('details_payment')}**: {order['payment_method']}""")
         with col_r2:
-            st.markdown(f"**Order Reference**: `{order['order_id']}`")
+            st.markdown(f"**{t('order_reference')}**: `{order['order_id']}`")
             for pid, qty in order['items'].items():
                 prod = PRODUCTS[pid]
                 st.markdown(f"- {prod['image']} {prod['name']} (x{qty}): **${prod['price']*qty:.2f}**")
                 
             st.markdown(f"""<div style="background: #F8FAF8; padding: 1rem; border-radius: 8px; margin-top: 0.5rem; font-size: 0.9rem;">
-<div style="display: flex; justify-content: space-between;"><span>Subtotal:</span><span>${order['subtotal']:.2f}</span></div>
-{f'<div style="display: flex; justify-content: space-between; color: #C62828;"><span>Discount:</span><span>-${order["discount"]:.2f}</span></div>' if order['discount'] > 0 else ''}
-<div style="display: flex; justify-content: space-between;"><span>Shipping:</span><span>{"FREE" if order['shipping'] == 0 else f"${order['shipping']:.2f}"}</span></div>
-<div style="display: flex; justify-content: space-between;"><span>Tax (8%):</span><span>${order['tax']:.2f}</span></div>
+<div style="display: flex; justify-content: space-between;"><span>{t('subtotal_lbl')}:</span><span>${order['subtotal']:.2f}</span></div>
+{f'<div style="display: flex; justify-content: space-between; color: #C62828;"><span>{t("discount_lbl")}:</span><span>-${order["discount"]:.2f}</span></div>' if order['discount'] > 0 else ''}
+<div style="display: flex; justify-content: space-between;"><span>{t('shipping_lbl')}:</span><span>{"FREE" if order['shipping'] == 0 else f"${order['shipping']:.2f}"}</span></div>
+<div style="display: flex; justify-content: space-between;"><span>{t('tax_lbl')}:</span><span>${order['tax']:.2f}</span></div>
 <hr style="margin: 0.3rem 0;">
-<div style="display: flex; justify-content: space-between; font-weight: 700; color: #2E7D32;"><span>Grand Total:</span><span>${order['total']:.2f}</span></div>
+<div style="display: flex; justify-content: space-between; font-weight: 700; color: #2E7D32;"><span>{t('grand_total_lbl')}:</span><span>${order['total']:.2f}</span></div>
 </div>""", unsafe_allow_html=True)
             
         st.markdown("---")
         
-        if st.button("Continue Shopping 🛒", use_container_width=True):
+        if st.button(t('continue_shopping'), use_container_width=True):
             st.session_state.checkout_step = "cart"
             st.rerun()
 
@@ -132,26 +143,36 @@ else:
     
     with col_catalog:
         if st.session_state.checkout_step == "checkout":
-            st.markdown("### 💳 Secure Checkout")
-            st.markdown("Please fill out your delivery details to complete the fertilizer recommendation order.")
+            st.markdown(f"### {t('secure_checkout')}")
+            st.markdown(t('checkout_details'))
             
             with st.form("checkout_form"):
-                name = st.text_input("Full Name", placeholder="e.g. John Doe")
-                address = st.text_area("Delivery Address", placeholder="e.g. 123 Farm Road, Green County")
-                phone = st.text_input("Phone Number", placeholder="e.g. +1 555-0199")
+                name = st.text_input(t('details_name'), placeholder=t('full_name_placeholder') + " (" + t('name_eg') + ")")
+                address = st.text_area(t('details_address'), placeholder=t('delivery_address_placeholder') + " (" + t('address_eg') + ")")
+                phone = st.text_input(t('details_phone'), placeholder=t('phone_placeholder') + " (" + t('phone_eg') + ")")
                 
-                pay_method = st.selectbox(
-                    "Payment Method", 
-                    ["Cash on Delivery (COD)", "UPI / Instant FarmPay", "Credit/Debit Card", "Agricultural Subsidy Credits"]
+                pay_options = ["cod", "upi", "card", "subsidy"]
+                pay_labels = {
+                    "cod": t('pay_cod'),
+                    "upi": t('pay_upi'),
+                    "card": t('pay_card'),
+                    "subsidy": t('pay_subsidy')
+                }
+                
+                pay_choice = st.selectbox(
+                    t('details_payment'), 
+                    options=pay_options,
+                    format_func=lambda x: pay_labels[x]
                 )
+                pay_method = pay_labels[pay_choice]
                 
-                terms = st.checkbox("I agree to the Agricultural Direct Delivery Terms & Conditions")
+                terms = st.checkbox(t('agree_terms'))
                 
                 col_back, col_submit = st.columns([1, 1])
                 with col_back:
-                    back_click = st.form_submit_button("Back to Cart")
+                    back_click = st.form_submit_button(t('back_to_cart'))
                 with col_submit:
-                    submit_click = st.form_submit_button("Place Order 🚀")
+                    submit_click = st.form_submit_button(t('place_order'))
                     
             if back_click:
                 st.session_state.checkout_step = "cart"
@@ -187,7 +208,7 @@ else:
                         "shipping": shipping,
                         "tax": tax,
                         "total": grand_total,
-                        "status": "Order Placed",
+                        "status": t('stepper_placed'),
                         "status_index": 0
                     }
                     
@@ -198,16 +219,39 @@ else:
                     st.rerun()
         else:
             # Browse mode
-            st.markdown("### Browse Products")
+            st.markdown(f"### {t('browse_products')}")
             
             # Filters
             col_f1, col_f2, col_f3 = st.columns(3)
             with col_f1:
-                cat_filter = st.selectbox("Category Filter", ["All", "Fertilizer", "Fungicide", "Pest Control", "Soil & Nutrient Care"])
+                cat_options = ["All", "Fertilizer", "Fungicide", "Pest Control", "Soil & Nutrient Care"]
+                cat_labels = {
+                    "All": t('cat_all'),
+                    "Fertilizer": t('cat_fertilizer'),
+                    "Fungicide": t('cat_fungicide'),
+                    "Pest Control": t('cat_pest'),
+                    "Soil & Nutrient Care": t('cat_soil')
+                }
+                cat_filter = st.selectbox(
+                    t('category_filter'), 
+                    options=cat_options,
+                    format_func=lambda x: cat_labels[x]
+                )
             with col_f2:
-                search_query = st.text_input("🔍 Search Products", placeholder="Search products...")
+                search_query = st.text_input(t('search_placeholder'), placeholder=t('search_help'))
             with col_f3:
-                sort_option = st.selectbox("Sort By", ["Popularity", "Price: Low to High", "Price: High to Low", "Rating"])
+                sort_options = ["Popularity", "Price: Low to High", "Price: High to Low", "Rating"]
+                sort_labels = {
+                    "Popularity": t('sort_pop'),
+                    "Price: Low to High": t('sort_lh'),
+                    "Price: High to Low": t('sort_hl'),
+                    "Rating": t('sort_rating')
+                }
+                sort_option = st.selectbox(
+                    t('sort_by'), 
+                    options=sort_options,
+                    format_func=lambda x: sort_labels[x]
+                )
             
             # Filter logic
             filtered_prods = list(PRODUCTS.values())
@@ -236,7 +280,7 @@ else:
                 gcol = gcols[idx % 2]
                 with gcol:
                     is_rec = prod['id'] in recs_ids
-                    rec_badge = '<div style="position: absolute; top: 10px; right: 10px; background: #E8F5E9; color: #2E7D32; padding: 0.2rem 0.5rem; border-radius: 20px; font-size: 0.7rem; font-weight: 700; border: 1px solid #2E7D32;">⭐ RECOMMENDED</div>' if is_rec else ''
+                    rec_badge = f'<div style="position: absolute; top: 10px; right: 10px; background: #E8F5E9; color: #2E7D32; padding: 0.2rem 0.5rem; border-radius: 20px; font-size: 0.7rem; font-weight: 700; border: 1px solid #2E7D32;">{t("recommended_badge")}</div>' if is_rec else ''
                     
                     img_base64 = get_base64_image(prod.get('image_path', ''))
                     if img_base64:
@@ -251,7 +295,7 @@ else:
 <span style="font-size: 0.8rem; background: #E2E8F0; color: #475569; padding: 0.15rem 0.5rem; border-radius: 12px; font-weight: 600;">{prod['category']}</span>
 <h4 style="margin: 0.5rem 0 0.25rem 0; color: #1E293B; font-size: 1.05rem;">{prod['name']}</h4>
 <p style="font-size: 0.85rem; color: #64748B; line-height: 1.3; min-height: 3.5rem;">{prod['description']}</p>
-<div style="font-size: 0.8rem; color: #475569; margin-bottom: 0.5rem;"><b>Suitable for:</b> {prod['suitability']}</div>
+<div style="font-size: 0.8rem; color: #475569; margin-bottom: 0.5rem;"><b>{t('suitable_for')}:</b> {prod['suitability']}</div>
 </div>
 <div>
 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
@@ -263,21 +307,21 @@ else:
                     
                     ac_col1, ac_col2 = st.columns(2)
                     with ac_col1:
-                        if st.button("Add to Cart", key=f"catalog_add_{prod['id']}"):
+                        if st.button(t('add_to_cart'), key=f"catalog_add_{prod['id']}", use_container_width=True):
                             st.session_state.cart[prod['id']] = st.session_state.cart.get(prod['id'], 0) + 1
-                            st.toast(f"Added {prod['name']}!")
+                            st.toast(t('added_to_cart_toast').format(prod['name']))
                             st.rerun()
                     with ac_col2:
-                        if st.button("Buy Now", key=f"catalog_buy_{prod['id']}"):
+                        if st.button(t('buy_now'), key=f"catalog_buy_{prod['id']}", use_container_width=True):
                             st.session_state.cart[prod['id']] = st.session_state.cart.get(prod['id'], 0) + 1
                             st.session_state.checkout_step = "checkout"
                             st.rerun()
 
     # Shopping Cart Column
     with col_cart:
-        st.markdown("### 🛒 Shopping Cart")
+        st.markdown(f"### {t('shopping_cart')}")
         if not st.session_state.cart:
-            st.markdown("Your cart is empty. Add recommended fertilizers to get started!")
+            st.markdown(t('cart_empty'))
         else:
             subtotal = 0.0
             for pid, qty in list(st.session_state.cart.items()):
@@ -310,19 +354,19 @@ else:
             if "coupon" not in st.session_state:
                 st.session_state.coupon = None
                 
-            coupon_input = st.text_input("Promo Code", value=st.session_state.coupon or "", placeholder="Try GROW50 or AGRISMART")
+            coupon_input = st.text_input(t('promo_code'), value=st.session_state.coupon or "", placeholder=t('promo_placeholder'))
             
             discount_pct = 0.0
             if coupon_input.upper() == "GROW50":
-                st.success("Grower's Special: 50% discount applied!")
+                st.success(t('promo_success_grow'))
                 discount_pct = 0.50
                 st.session_state.coupon = "GROW50"
             elif coupon_input.upper() == "AGRISMART":
-                st.success("AgriSmart: 20% discount applied!")
+                st.success(t('promo_success_smart'))
                 discount_pct = 0.20
                 st.session_state.coupon = "AGRISMART"
             elif coupon_input:
-                st.error("Invalid coupon code.")
+                st.error(t('promo_invalid'))
                 st.session_state.coupon = None
                 
             discount = subtotal * discount_pct
@@ -332,26 +376,26 @@ else:
             
             st.markdown(f"""<div style="background: #F8FAF8; padding: 1rem; border-radius: 8px; margin-top: 1rem; font-size: 0.9rem;">
 <div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem;">
-<span>Subtotal:</span>
+<span>{t('subtotal_lbl')}:</span>
 <span>${subtotal:.2f}</span>
 </div>
-{f'<div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem; color: #C62828;"><span>Discount ({discount_pct*100:.0f}%):</span><span>-${discount:.2f}</span></div>' if discount > 0 else ''}
+{f'<div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem; color: #C62828;"><span>{t("discount_lbl")} ({discount_pct*100:.0f}%):</span><span>-${discount:.2f}</span></div>' if discount > 0 else ''}
 <div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem;">
-<span>Shipping:</span>
+<span>{t('shipping_lbl')}:</span>
 <span>{"FREE" if shipping == 0 else f"${shipping:.2f}"}</span>
 </div>
 <div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem;">
-<span>Tax (8%):</span>
+<span>{t('tax_lbl')}:</span>
 <span>${tax:.2f}</span>
 </div>
 <hr style="margin: 0.5rem 0;">
 <div style="display: flex; justify-content: space-between; font-weight: 800; font-size: 1.1rem; color: #2E7D32;">
-<span>Total:</span>
+<span>{t('grand_total_lbl')}:</span>
 <span>${grand_total:.2f}</span>
 </div>
 </div>""", unsafe_allow_html=True)
             
             if st.session_state.checkout_step == "cart":
-                if st.button("Proceed to Checkout 💳", use_container_width=True):
+                if st.button(t('proceed_checkout'), use_container_width=True):
                     st.session_state.checkout_step = "checkout"
                     st.rerun()

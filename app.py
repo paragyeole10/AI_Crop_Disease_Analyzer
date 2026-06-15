@@ -21,6 +21,8 @@ inject_custom_css()
 render_sidebar_branding()
 
 # 3. Session State Initializations
+if "language" not in st.session_state:
+    st.session_state.language = "en"
 if "cart" not in st.session_state:
     st.session_state.cart = {}
 if "orders" not in st.session_state:

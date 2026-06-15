@@ -1,0 +1,280 @@
+{
+  "Pepper__bell___Bacterial_spot": {
+    "disease_name": "Mancha Bacteriana del Pimiento Morrón",
+    "description": "Causada por la bacteria Xanthomonas campestris pv. vesicatoria, esta es una enfermedad importante de los pimientos. Conduce a una defoliación severa, dejando los frutos expuestos a quemaduras solares y causando pérdidas significativas de rendimiento.",
+    "symptoms": [
+      "Manchas pequeñas, empapadas de agua y de aspecto grasiento en las hojas que se vuelven de color gris púrpura con centros negros.",
+      "Las hojas se vuelven amarillas y caen prematuramente, comenzando desde el dosel inferior.",
+      "Manchas marrones elevadas, ásperas y parecidas a verrugas en los frutos del pimiento."
+    ],
+    "treatment": [
+      "Pode y deseche las hojas y ramas infectadas inmediatamente para reducir la propagación bacteriana.",
+      "Aplique bactericidas a base de cobre ante el primer signo de síntomas.",
+      "Asegúrese de desinfectar las herramientas con una solución de lejía al 10% o alcohol isopropílico entre plantas."
+    ],
+    "prevention": [
+      "Utilice semillas y trasplantes certificados libres de enfermedades.",
+      "Evite el riego por aspersión aérea; use riego por goteo para mantener el follaje seco.",
+      "Rote los cultivos con especies no solanáceas durante al menos dos a tres años."
+    ]
+  },
+  "Pepper__bell___healthy": {
+    "disease_name": "Pimiento Morrón Sano",
+    "description": "La planta de pimiento está sana y no muestra signos de enfermedad infecciosa, daño por insectos o deficiencias graves de nutrientes.",
+    "symptoms": [
+      "Follaje verde exuberante y oscuro con tallos firmes y erguidos.",
+      "Flores sanas de color blanco a amarillo que se desarrollan normalmente.",
+      "Fruto liso y brillante sin manchas, lesiones ni orificios de entrada de insectos."
+    ],
+    "treatment": [
+      "No se necesita tratamiento contra la enfermedad.",
+      "Mantenga el riego y la fertilización regulares según los requisitos de la etapa de crecimiento."
+    ],
+    "prevention": [
+      "Proporcione una humedad constante en el suelo (aproximadamente 1 pulgada de agua por semana).",
+      "Monitoree regularmente para detectar plagas como pulgones o moscas blancas para prevenir la transmisión de virus."
+    ]
+  },
+  "Potato___Early_blight": {
+    "disease_name": "Tizón Temprano de la Patata",
+    "description": "El tizón temprano es causado por el hongo Alternaria solani. Afecta hojas, tallos y tubérculos, reduciendo la capacidad fotosintética de la planta de patata y afectando el tamaño y la calidad del tubérculo.",
+    "symptoms": [
+      "Manchas circulares de color marrón oscuro con anillos concéntricos (aspecto de 'blanco de tiro') en las hojas más viejas.",
+      "Amarillamiento (clorosis) del tejido foliar que rodea las manchas.",
+      "Lesiones oscuras, hundidas y circulares en los tubérculos de patata."
+    ],
+    "treatment": [
+      "Aplique fungicidas protectores que contengan clorotalonil, mancozeb o oxicloruro de cobre.",
+      "Pode y destruya las hojas inferiores infectadas para evitar que el hongo suba por la planta.",
+      "Aplique una fertilización nitrogenada equilibrada; las plantas estresadas o subfertilizadas son más susceptibles."
+    ],
+    "prevention": [
+      "Plante únicamente tubérculos de semilla certificados y resistentes a enfermedades.",
+      "Espacie las plantas adecuadamente para favorecer el secado rápido de las hojas después de la lluvia o el rocío.",
+      "Rote los cultivos de patata con maíz, granos pequeños o pastos; evite tomates y pimientos."
+    ]
+  },
+  "Potato___Late_blight": {
+    "disease_name": "Tizón Tardío de la Patata",
+    "description": "El tizón tardío es causado por el patógeno Phytophthora infestans. Es una enfermedad altamente destructiva que puede acabar con cultivos enteros en pocos días bajo condiciones frescas y húmedas.",
+    "symptoms": [
+      "Lesiones grandes, irregulares, oscuras y empapadas de agua en las hojas que se expanden rápidamente.",
+      "Un crecimiento aterciopelado blanco en el envés de las hojas durante las mañanas húmedas.",
+      "Los tubérculos desarrollan una podredumbre seca de la piel de color marrón a púrpura que se extiende hacia la pulpa."
+    ],
+    "treatment": [
+      "Aplique fungicidas sistémicos (como metalaxil, dimetomorf o propamocarb) inmediatamente después de la detección.",
+      "Retire y destruya rápidamente las plantas infectadas; no las composte.",
+      "Elimine las vides de patata 2 semanas antes de la cosecha para evitar que las esporas infecten los tubérculos durante la excavación."
+    ],
+    "prevention": [
+      "Plante únicamente tubérculos de semilla certificados y libres de enfermedades.",
+      "Seleccione cultivares resistentes al tizón tardío si están disponibles en su región.",
+      "Evite el riego aéreo e irrigue temprano en la mañana para que el follaje se seque rápidamente."
+    ]
+  },
+  "Potato___healthy": {
+    "disease_name": "Patata Sana",
+    "description": "La planta de patata está sana, exhibe una estructura fuerte de hojas y tallos, y no tiene signos visibles de actividad de patógenos.",
+    "symptoms": [
+      "Hojas compuestas de color verde robusto con superficies foliares limpias y sin manchas.",
+      "Tallos verdes gruesos y erguidos.",
+      "Sistemas de raíces saludables y tubérculos firmes en desarrollo bajo el suelo."
+    ],
+    "treatment": [
+      "No se necesita tratamiento contra la enfermedad.",
+      "Continúe con las prácticas estándar de cultivo, incluido el aporcado de tierra alrededor de los tallos."
+    ],
+    "prevention": [
+      "Practique un programa de rotación de cultivos de 3 años.",
+      "Proporcione un riego profundo una vez a la semana en lugar de riegos superficiales frecuentes."
+    ]
+  },
+  "Tomato_Bacterial_spot": {
+    "disease_name": "Mancha Bacteriana del Tomate",
+    "description": "La mancha bacteriana es causada por varias especies de Xanthomonas. Ataca hojas, tallos y frutos, y se propaga rápidamente en climas cálidos y húmedos, resultando en defoliación y frutos marcados.",
+    "symptoms": [
+      "Manchas circulares pequeñas, oscuras, empapadas de agua y grasientas en las hojas, a menudo rodeadas por un halo amarillo.",
+      "Las manchas pueden unirse, causando que grandes áreas de la hoja se sequen, se vuelvan marrones y caigan.",
+      "Ampollas pequeñas, oscuras y elevadas en los frutos verdes que eventualmente se vuelven marrones, ásperas y con costras."
+    ],
+    "treatment": [
+      "Rocíe las plantas con una mezcla de fungicida de cobre y mancozeb semanalmente.",
+      "Retire las plantas fuertemente infectadas para detener la propagación local de bacterias.",
+      "Evite manipular o podar las plantas de tomate cuando estén mojadas por el rocío o la lluvia."
+    ],
+    "prevention": [
+      "Compre semillas certificadas libres de patógenos o semillas tratadas con agua caliente.",
+      "Implemente riego por goteo o mangueras de remojo en lugar de aspersores aéreos.",
+      "Rote los cultivos lejos de tomates, pimientos y berenjenas durante al menos 2 años."
+    ]
+  },
+  "Tomato_Early_blight": {
+    "disease_name": "Tizón Temprano del Tomate",
+    "description": "El tizón temprano es una enfermedad fúngica común causada por Alternaria solani. Comienza en las hojas más viejas en la base de la planta y se mueve hacia arriba, causando la caída prematura de las hojas y reduciendo el rendimiento.",
+    "symptoms": [
+      "Anillos concéntricos de color marrón oscuro parecidos a un blanco en las hojas más viejas, generalmente comenzando en la base.",
+      "Amarillamiento del tejido foliar que rodea las manchas, lo que provoca que las hojas se sequen y caigan.",
+      "Manchas oscuras, coriáceas y hundidas con anillos concéntricos en el extremo del tallo de los frutos del tomate."
+    ],
+    "treatment": [
+      "Aplique fungicidas protectores que contengan clorotalonil, mancozeb o cobre.",
+      "Pode las hojas inferiores de 12 a 18 pulgadas para evitar que las esporas del suelo salpiquen sobre el follaje.",
+      "Aplique mantillo alrededor de la base de las plantas para crear una barrera contra las esporas salpicadas por el suelo."
+    ],
+    "prevention": [
+      "Mantenga un amplio espacio (al menos 2-3 pies) entre las plantas para una excelente circulación del aire.",
+      "Riegue en la base de la planta en lugar de desde arriba.",
+      "Rote los cultivos anualmente y limpie todos los residuos de tomate al final de la temporada."
+    ]
+  },
+  "Tomato_Late_blight": {
+    "disease_name": "Tizón Tardío del Tomate",
+    "description": "El tizón tardío del tomate es una enfermedad devastadora causada por el moho acuático Phytophthora infestans. Prospera en condiciones frescas y húmedas y puede destruir rápidamente hojas, tallos y frutos en campos enteros.",
+    "symptoms": [
+      "Lesiones grandes, empapadas de agua, de color marrón oscuro o negro en hojas y tallos que se expanden rápidamente.",
+      "Un crecimiento delicado, blanco y difuso en el envés de las hojas infectadas en condiciones de alta humedad.",
+      "Parches grandes, firmes, de aspecto grasiento y marrón dorado en los frutos del tomate que se vuelven blandos y se pudren."
+    ],
+    "treatment": [
+      "Aplique fungicidas específicos contra el tizón tardío inmediatamente (como clorotalonil, cobre o mefenoxam).",
+      "Arranque y destruya completamente las plantas infectadas (embólselas y deséchelas; no las deje en el campo).",
+      "Monitoree las alertas meteorológicas locales para aplicar pulverizaciones preventivas con anticipación."
+    ],
+    "prevention": [
+      "Cultive variedades de tomate resistentes (por ejemplo, Mountain Magic, Defiant, Iron Lady).",
+      "Evite el riego aéreo y plante en sitios con pleno sol y excelente drenaje.",
+      "No plante tomates cerca de patatas, ya que el patógeno salta fácilmente entre los dos."
+    ]
+  },
+  "Tomato_Leaf_Mold": {
+    "disease_name": "Moho Foliar del Tomate",
+    "description": "El moho de la hoja es causado por el hongo Passalora fulva. Es altamente prevalente en entornos de invernadero con alta humedad y mala ventilación, causando que las hojas se marchiten y mueran.",
+    "symptoms": [
+      "Manchas de color verde pálido o amarillo en la superficie superior de las hojas más viejas.",
+      "Un crecimiento de moho aterciopelado de color verde oliva a marrón grisáceo en el envés correspondiente de las hojas.",
+      "Las hojas infectadas se curvan, se marchitan y caen, afectando ocasionalmente a las flores y los frutos."
+    ],
+    "treatment": [
+      "Rocíe fungicidas protectores como cobre o clorotalonil ante el primer signo de moho foliar.",
+      "Pode las hojas inferiores y los tallos secundarios para mejorar la penetración de la luz y el movimiento del aire.",
+      "Aumente la temperatura y la ventilación en los invernaderos para reducir la humedad."
+    ],
+    "prevention": [
+      "Mantenga la humedad relativa del invernadero por debajo del 85% usando ventiladores y calentadores.",
+      "Cultive variedades de tomate resistentes al moho foliar.",
+      "Riegue temprano en la mañana y evite mojar el follaje."
+    ]
+  },
+  "Tomato_Septoria_leaf_spot": {
+    "disease_name": "Mancha Foliar de Septoria del Tomate",
+    "description": "La mancha foliar por Septoria es causada por el hongo Septoria lycopersici. Aunque no pudre el fruto directamente, causa una defoliación severa, que detiene el crecimiento de la planta y expone el fruto a quemaduras solares.",
+    "symptoms": [
+      "Numerosas manchas circulares pequeñas (1/16 a 1/8 de pulgada) con bordes de color marrón oscuro y centros de color gris a tostado.",
+      "Diminutas estructuras negras parecidas a granos (cuerpos fructíferos llamados picnidios) dentro de los centros de las manchas.",
+      "Las hojas inferiores se vuelven amarillas, se marchitan y caen, progresando de abajo hacia arriba."
+    ],
+    "treatment": [
+      "Aplique fungicidas que contengan clorotalonil, mancozeb o cobre en un programa de 7 a 10 días.",
+      "Coloque mantillo alrededor de la base de la planta para evitar que las esporas salpiquen desde el suelo.",
+      "Pode las hojas inferiores infectadas y lávese las manos y las herramientas antes de tocar plantas sanas."
+    ],
+    "prevention": [
+      "Incorpore un ciclo de rotación de cultivos de 2 a 3 años sin tomates, patatas ni berenjenas.",
+      "Riegue con riego por goteo o mangueras de remojo para evitar mojar las hojas.",
+      "Limpie todos los residuos de plantas del jardín al final de la temporada de cosecha."
+    ]
+  },
+  "Tomato_Spider_mites_Two_spotted_spider_mite": {
+    "disease_name": "Araña Roja del Tomate (Dos Puntos)",
+    "description": "La araña roja de dos puntos (Tetranychus urticae) es una plaga diminuta que se alimenta de las células de las plantas, absorbiendo la savia del envés de las hojas. Prosperan en climas secos y cálidos y pueden causar daños rápidos en las hojas.",
+    "symptoms": [
+      "Fino punteado amarillo a blanco (puntos diminutos) en la superficie superior de las hojas.",
+      "Las hojas se vuelven de color bronce, amarillas, secas y parecidas al papel, y finalmente caen.",
+      "Telaraña muy fina en el envés de las hojas, pecíolos y tallos bajo una infestación severa."
+    ],
+    "treatment": [
+      "Rocíe el envés de las hojas con jabones insecticidas, aceites hortícolas o aceite de neem.",
+      "Para infestaciones graves, aplique miticidas/acaricidas específicos.",
+      "Introduzca depredadores naturales como ácaros depredadores (Phytoseiulus persimilis) o mariquitas."
+    ],
+    "prevention": [
+      "Mantenga las plantas adecuadamente regadas; las condiciones secas y polvorientas favorecen la reproducción de los ácaros.",
+      "Manguera las plantas con un chorro fuerte de agua periódicamente para lavar los ácaros y las telarañas.",
+      "Deshierbe el área circundante del jardín, ya que las malezas pueden albergar arañas rojas."
+    ]
+  },
+  "Tomato__Target_Spot": {
+    "disease_name": "Mancha Objetivo del Tomate",
+    "description": "La mancha objetivo es causada por el hongo Corynespora cassiicola. Ataca hojas, tallos y frutos, y se ve favorecida por temperaturas cálidas y humedad prolongada en las hojas, causando lesiones circulares.",
+    "symptoms": [
+      "Pequeñas manchas foliares empapadas de agua que se expanden en lesiones circulares marrones con anillos concéntricos.",
+      "A diferencia del tizón temprano, las manchas son más pequeñas y están distribuidas en todo el dosel superior e inferior.",
+      "Lesiones hundidas, circulares y de color marrón oscuro en el fruto del tomate, a menudo con centros oscuros."
+    ],
+    "treatment": [
+      "Aplique fungicidas como clorotalonil, cobre o estrobirulinas (por ejemplo, azoxistrobina).",
+      "Pode las ramas medias e inferiores para disminuir la humedad en el dosel de la planta.",
+      "Retire y destruya las partes infectadas de la planta inmediatamente."
+    ],
+    "prevention": [
+      "Espacie las plantas adecuadamente para optimizar el flujo de aire y la penetración de la luz solar.",
+      "Evite el riego aéreo; riegue cerca de la superficie del suelo.",
+      "Practique la rotación de cultivos y controle las malezas en y alrededor del cultivo de tomate."
+    ]
+  },
+  "Tomato__Tomato_YellowLeaf__Curl_Virus": {
+    "disease_name": "Virus del Rizado de la Hoja Amarilla del Tomate",
+    "description": "El virus del rizado de la hoja amarilla del tomate (TYLCV) es una enfermedad viral destructiva transmitida por la mosca blanca de la hoja de plata (Bemisia tabaci). Causa un retraso grave del crecimiento y evita que la planta produzca frutos.",
+    "symptoms": [
+      "El crecimiento de hojas nuevas se reduce severamente, mostrando un enrollamiento hacia arriba y márgenes amarillos.",
+      "Las hojas se vuelven gruesas, arrugadas, coriáceas y más pequeñas de lo normal.",
+      "Retraso grave del crecimiento de la planta, con flores que abortan y caen antes de que se pueda formar el fruto."
+    ],
+    "treatment": [
+      "No existe cura química para las infecciones virales de las plantas. Las plantas infectadas deben arrancarse y destruirse.",
+      "Controle el vector de la mosca blanca con insecticidas sistémicos, jabones insecticidas o aceite de neem.",
+      "Coloque tarjetas amarillas pegajosas cerca de las plantas para monitorear y atrapar moscas blancas adultas."
+    ],
+    "prevention": [
+      "Plante variedades de tomate resistentes al virus (por ejemplo, cultivares resistentes a TY).",
+      "Use cubiertas de hileras flotantes o redes finas para insectos para proteger las plantas jóvenes de las moscas blancas.",
+      "Mantenga una zona libre de malezas alrededor del campo, ya que las malezas pueden albergar tanto el virus como las moscas blancas."
+    ]
+  },
+  "Tomato__Tomato_mosaic_virus": {
+    "disease_name": "Virus del Mosaico del Tomate",
+    "description": "El virus del mosaico del tomate (ToMV) es un virus vegetal altamente estable y contagioso. Se propaga a través del contacto mecánico (manos, herramientas, roce contra las plantas) y puede sobrevivir en semillas, suelo y desechos vegetales durante años.",
+    "symptoms": [
+      "Las hojas muestran parches moteados de color verde claro y oscuro, creando un patrón de mosaico.",
+      "Las hojas pueden verse ampolladas, arrugadas o muy distorsionadas (formas de 'hoja de helecho' o de cordón).",
+      "Marrón interno de la pared del fruto y anillos o parches amarillos en la superficie del fruto."
+    ],
+    "treatment": [
+      "No existe tratamiento químico para las infecciones virales. Retire y destruya las plantas infectadas inmediatamente.",
+      "Desinfecte manos y herramientas con solución de leche desnatada en polvo, jabón o solución desinfectante después de manipular plantas."
+    ],
+    "prevention": [
+      "Compre semillas y plántulas certificadas libres de virus.",
+      "No fume ni manipule productos de tabaco cerca de las plantas de tomate, ya que el virus del mosaico del tabaco está estrechamente relacionado.",
+      "Practique una higiene estricta y lávese bien las manos antes de trabajar en el jardín."
+    ]
+  },
+  "Tomato_healthy": {
+    "disease_name": "Tomate Sano",
+    "description": "La planta de tomate está sana, exhibe un crecimiento fuerte de hojas, tallos y raíces, y no tiene síntomas visibles de enfermedades o plagas.",
+    "symptoms": [
+      "Hojas compuestas de color verde exuberante y oscuro con márgenes limpios y sin manchas.",
+      "Tallo principal y ramas fuertes y robustos.",
+      "Fruto liso y uniforme de color rojo o verde que se desarrolla normalmente sin imperfecciones."
+    ],
+    "treatment": [
+      "No se necesita tratamiento contra la enfermedad.",
+      "Mantenga una humedad constante en el suelo, apoye las plantas con estacas o jaulas y deshierbe regularmente."
+    ],
+    "prevention": [
+      "Aplique un fertilizante de tomate equilibrado al plantar y cuando el fruto comience a cuajar.",
+      "Coloque mantillo en el suelo para conservar la humedad y evitar salpicaduras de tierra sobre las hojas."
+    ]
+  }
+}

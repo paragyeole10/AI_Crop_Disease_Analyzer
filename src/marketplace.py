@@ -105,16 +105,55 @@ FALLBACK_PRODUCTS = {
     }
 }
 
-PRODUCTS = {}
-if os.path.exists(JSON_PATH):
-    try:
-        with open(JSON_PATH, "r", encoding="utf-8") as f:
-            PRODUCTS = json.load(f)
-    except Exception as e:
-        print(f"Error loading products.json: {e}")
-        PRODUCTS = FALLBACK_PRODUCTS
-else:
-    PRODUCTS = FALLBACK_PRODUCTS
+class LocalizedProducts(dict):
+    def _get_lang_products(self):
+        try:
+            import streamlit as st
+            lang = st.session_state.get("language", "en")
+        except Exception:
+            lang = "en"
+            
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        if lang == "hi":
+            path = os.path.join(base_dir, "products_hi.json")
+        elif lang == "es":
+            path = os.path.join(base_dir, "products_es.json")
+        else:
+            path = os.path.join(base_dir, "products.json")
+            
+        if os.path.exists(path):
+            try:
+                with open(path, "r", encoding="utf-8") as f:
+                    return json.load(f)
+            except Exception:
+                pass
+        return FALLBACK_PRODUCTS
+
+    def __getitem__(self, key):
+        return self._get_lang_products()[key]
+
+    def __contains__(self, key):
+        return key in self._get_lang_products()
+
+    def get(self, key, default=None):
+        return self._get_lang_products().get(key, default)
+
+    def values(self):
+        return self._get_lang_products().values()
+
+    def items(self):
+        return self._get_lang_products().items()
+
+    def keys(self):
+        return self._get_lang_products().keys()
+
+    def __len__(self):
+        return len(self._get_lang_products())
+
+    def __iter__(self):
+        return iter(self._get_lang_products())
+
+PRODUCTS = LocalizedProducts()
 
 # Map each class output from the disease predictor to recommended product IDs
 DISEASE_PRODUCT_MAPPING = {

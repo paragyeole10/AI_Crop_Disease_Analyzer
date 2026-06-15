@@ -1,0 +1,98 @@
+{
+  "NPK_19_19_19": {
+    "id": "NPK_19_19_19",
+    "name": "Fertilizante NPK Equilibrado (19-19-19)",
+    "category": "Fertilizante",
+    "description": "Fórmula premium soluble en agua de nitrógeno, fósforo y potasio. Aumenta el crecimiento general de las plantas, la arquitectura de las raíces y el tamaño del fruto.",
+    "price": 14.99,
+    "rating": 4.8,
+    "image": "🧪",
+    "image_path": "assets/products/npk_fertilizer.png",
+    "suitability": "Todos los cultivos (tomate, patata, pimiento)",
+    "benefits": "Proporciona macronutrientes equilibrados, mejora la floración y acelera el crecimiento vegetativo."
+  },
+  "COPPER_FUNGICIDE": {
+    "id": "COPPER_FUNGICIDE",
+    "name": "Fungicida de Cobre Líquido",
+    "category": "Fungicida",
+    "description": "El octanoato de cobre aprobado orgánicamente controla el tizón temprano y tardío, la mancha bacteriana y el moho de las hojas en cultivos de hortalizas.",
+    "price": 18.50,
+    "rating": 4.9,
+    "image": "🧴",
+    "image_path": "assets/products/copper_fungicide.png",
+    "suitability": "Tomate, Patata, Pimiento",
+    "benefits": "Detiene la germinación de esporas, controla infecciones bacterianas y no deja residuos tóxicos en el suelo."
+  },
+  "NEEM_OIL_SPRAY": {
+    "id": "NEEM_OIL_SPRAY",
+    "name": "Aceite de Neem Orgánico Prensado en Frío",
+    "category": "Control de Plagas",
+    "description": "Insecticida, acaricida y fungicida botánico listo para usar. Ideal para controlar arañas rojas, moscas blancas y pulgones.",
+    "price": 12.99,
+    "rating": 4.7,
+    "image": "🌿",
+    "image_path": "assets/products/neem_oil.png",
+    "suitability": "Todos los cultivos",
+    "benefits": "Interrumpe los ciclos reproductivos de las plagas, respetuoso con el medio ambiente y seguro para insectos beneficiosos como las abejas."
+  },
+  "CALCIUM_NITRATE": {
+    "id": "CALCIUM_NITRATE",
+    "name": "Nitrato de Calcio para Pulverización Foliar",
+    "category": "Suelo y Nutrientes",
+    "description": "Fertilizante mineral específico para curar deficiencias de calcio. Previene la podredumbre apical en frutos de tomate y pimiento.",
+    "price": 16.25,
+    "rating": 4.6,
+    "image": "❄️",
+    "image_path": "assets/products/calcium_nitrate.png",
+    "suitability": "Tomate, Pimiento",
+    "benefits": "Fortalece las paredes celulares, detiene la podredumbre apical del fruto y mejora la vida útil."
+  },
+  "ORGANIC_COMPOST": {
+    "id": "ORGANIC_COMPOST",
+    "name": "Vermicompost Bioactivo",
+    "category": "Suelo y Nutrientes",
+    "description": "Enriquecido con hongos micorrícicos y ácidos húmicos para restaurar el microbioma del suelo y aumentar la inmunidad natural del cultivo.",
+    "price": 9.99,
+    "rating": 4.8,
+    "image": "🧫",
+    "image_path": "assets/products/organic_compost.png",
+    "suitability": "Todos los cultivos",
+    "benefits": "Mejora la retención de humedad del suelo, proporciona oligoelementos completos y estimula un crecimiento robusto de las raíces."
+  },
+  "MANCOZEB_WP": {
+    "id": "MANCOZEB_WP",
+    "name": "Fungicida Mancozeb 75% WP",
+    "category": "Fungicida",
+    "description": "Fungicida de contacto de amplio espectro que forma una capa protectora en las hojas para detener tizones fúngicos y la mancha de Septoria.",
+    "price": 22.00,
+    "rating": 4.5,
+    "image": "📦",
+    "image_path": "assets/products/mancozeb.png",
+    "suitability": "Tomate, Patata",
+    "benefits": "La actividad multisitio previene la resistencia, es resistente a la lluvia y proporciona suplementos de zinc y manganeso."
+  },
+  "SULFUR_DUST": {
+    "id": "SULFUR_DUST",
+    "name": "Polvo de Azufre Micronizado",
+    "category": "Fungicida",
+    "description": "Polvo/aerosol natural de doble acción que protege los cultivos contra el mildiu polvoriento, mohos de las hojas y arañas rojas microscópicas.",
+    "price": 11.49,
+    "rating": 4.4,
+    "image": "🟡",
+    "image_path": "assets/products/sulfur_powder.png",
+    "suitability": "Tomate, Pimiento",
+    "benefits": "Ecológico, actúa como fungicida y acaricida, y proporciona el nutriente esencial azufre."
+  },
+  "EPSOM_SALT": {
+    "id": "EPSOM_SALT",
+    "name": "Sal de Epsom Agrícola Pura",
+    "category": "Suelo y Nutrientes",
+    "description": "Cristales de sulfato de magnesio altamente solubles. Cura el amarillamiento de las hojas entre los nervios e intensifica el color verde.",
+    "price": 8.75,
+    "rating": 4.7,
+    "image": "🧂",
+    "image_path": "assets/products/epsom_salt.png",
+    "suitability": "Todos los cultivos",
+    "benefits": "Mejora la síntesis de clorofila, maximiza la absorción de fertilizantes e incrementa el rendimiento del cultivo."
+  }
+}
