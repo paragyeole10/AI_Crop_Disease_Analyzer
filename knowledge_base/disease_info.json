@@ -1,280 +1,320 @@
 {
-  "Pepper__bell___Bacterial_spot": {
-    "disease_name": "Pepper Bell Bacterial Spot",
-    "description": "Caused by the bacterium Xanthomonas campestris pv. vesicatoria, this is a major disease of peppers. It leads to severe defoliation, leaving fruits exposed to sunscald and causing significant yield losses.",
+  "Corn___Common_Rust": {
+    "disease_name": "Common Rust",
+    "description": "Common rust is a fungal disease caused by Puccinia sorghi, causing powdery rust-colored pustules on leaf surfaces.",
     "symptoms": [
-      "Small, water-soaked, greasy-looking spots on leaves that turn purplish-gray with black centers.",
-      "Leaves turn yellow and drop prematurely, starting from the lower canopy.",
-      "Raised, rough, wart-like brown spots on the pepper fruits."
+      "Cinnamon-brown pustules on both upper and lower leaf surfaces.",
+      "Leaves turn yellow and may wither prematurely.",
+      "Pustules turn dark brown to black as the crop matures."
     ],
     "treatment": [
-      "Prune and discard infected leaves and branches immediately to reduce bacterial spread.",
-      "Apply copper-based bactericides at the first sign of symptoms.",
-      "Ensure tools are sanitized with a 10% bleach solution or isopropyl alcohol between plants."
+      "Apply recommended copper-based or triazole fungicides early in the season.",
+      "Avoid overhead sprinkler irrigation to keep the canopy dry.",
+      "Ensure proper crop spacing to improve ventilation."
     ],
     "prevention": [
-      "Use certified disease-free seeds and transplants.",
-      "Avoid overhead sprinkler irrigation; use drip irrigation to keep foliage dry.",
-      "Rotate crops with non-solanaceous species for at least two to three years."
+      "Use rust-resistant hybrid corn seeds.",
+      "Practice proper crop rotation with non-host crops.",
+      "Maintain optimal soil health with balanced nitrogen application."
     ]
   },
-  "Pepper__bell___healthy": {
-    "disease_name": "Pepper Bell Healthy",
-    "description": "The pepper plant is healthy and displays no signs of infectious disease, insect damage, or severe nutrient deficiencies.",
+  "Corn___Gray_Leaf_Spot": {
+    "disease_name": "Gray Leaf Spot",
+    "description": "Gray leaf spot is a fungal disease caused by Cercospora zeae-maydis. It causes rectangular lesions along the veins of corn leaves.",
     "symptoms": [
-      "Lush, dark-green foliage with firm, upright stems.",
-      "Healthy white-to-yellow flowers developing normally.",
-      "Smooth, glossy fruit without spots, lesions, or insect entry holes."
+      "Rectangular, gray-to-tan lesions restricted by leaf veins.",
+      "Lesions coalesce to kill entire leaf blades under hot and humid conditions.",
+      "Severe leaf blighting leading to stalk lodging and yield loss."
     ],
     "treatment": [
-      "No disease treatment is necessary.",
-      "Maintain regular watering and fertilizing according to growth stage requirements."
+      "Apply strobilurin or triazole fungicides at the first sign of lesions.",
+      "Mow or till fields to accelerate the decomposition of residue.",
+      "Ensure balanced soil potash nutrition."
     ],
     "prevention": [
-      "Provide consistent soil moisture (about 1 inch of water per week).",
-      "Monitor regularly for pests like aphids or whiteflies to prevent virus transmission."
+      "Select resistant hybrids with strong Gray Leaf Spot scores.",
+      "Practice a two-year crop rotation with soy or wheat.",
+      "Avoid no-till farming in fields with a history of the disease."
     ]
   },
-  "Potato___Early_blight": {
-    "disease_name": "Potato Early Blight",
-    "description": "Early Blight is caused by the fungus Alternaria solani. It affects leaves, stems, and tubers, reducing the photosynthetic capacity of the potato plant and impacting tuber size and quality.",
+  "Corn___Healthy": {
+    "disease_name": "Healthy Corn",
+    "description": "The corn foliage is healthy, showing bright green leaves with no symptoms of fungal or bacterial infections.",
     "symptoms": [
-      "Dark brown, circular spots with concentric rings ('target-board' appearance) on older leaves.",
-      "Yellowing (chlorosis) of the leaf tissue surrounding the spots.",
-      "Dark, sunken, circular lesions on the potato tubers themselves."
+      "Leaves are vibrant green without any lesions or spots.",
+      "Firm stalks and normal grain development.",
+      "Uniform crop growth and dense canopy."
     ],
     "treatment": [
-      "Apply protective fungicides containing chlorothalonil, mancozeb, or copper oxychloride.",
-      "Prune and destroy infected lower leaves to prevent the fungus from climbing up the plant.",
-      "Apply balanced nitrogen fertilization; over-stressed or under-fertilized plants are more susceptible."
+      "No active treatment required.",
+      "Continue standard irrigation and fertilizing routines."
     ],
     "prevention": [
-      "Plant certified, disease-resistant seed tubers.",
-      "Space plants adequately to encourage rapid leaf drying after rain or dew.",
-      "Rotate potato crops with corn, small grains, or grasses; avoid tomatoes and peppers."
+      "Maintain periodic field scouting.",
+      "Follow balanced fertilizer application guidelines.",
+      "Avoid stress conditions like over or under-watering."
     ]
   },
-  "Potato___Late_blight": {
-    "disease_name": "Potato Late Blight",
-    "description": "Late Blight is caused by the oomycete pathogen Phytophthora infestans. It is a highly destructive disease that can wipe out entire crops within days under cool, wet conditions, and is famous for causing the Irish Potato Famine.",
+  "Corn___Northern_Leaf_Blight": {
+    "disease_name": "Northern Leaf Blight",
+    "description": "Northern corn leaf blight (NCLB) is a destructive fungal disease caused by Exserohilum turcicum, producing large cigar-shaped lesions.",
     "symptoms": [
-      "Large, irregular, water-soaked dark green to black lesions on leaves that expand rapidly.",
-      "A white, velvety fungal-like growth on the undersides of leaves during humid mornings.",
-      "Tubers develop a dry, brown-to-purple skin rot that extends into the flesh."
+      "Long, elliptical, cigar-shaped grayish-green or tan lesions.",
+      "Lesions appear first on lower leaves and move upwards.",
+      "Dirty green to dark gray dust-like spores on lesions during wet weather."
     ],
     "treatment": [
-      "Apply systemic fungicides (such as metalaxyl, dimethomorph, or propamocarb) immediately upon detection.",
-      "Quickly remove and destroy infected plants; do not compost them.",
-      "Kill potato vines 2 weeks prior to harvest to prevent spores from infecting tubers during digging."
+      "Spray triazole or strobilurin-based fungicides during silking.",
+      "Ensure thorough deep plowing of infected residue after harvest.",
+      "Incorporate crop rotation with soybean."
     ],
     "prevention": [
-      "Plant only certified, disease-free seed tubers.",
-      "Select late blight-resistant cultivars if available in your region.",
-      "Avoid overhead watering and irrigate early in the morning so foliage dries quickly."
+      "Plant NCLB-resistant corn hybrids.",
+      "Clean tillage tools before entering new fields.",
+      "Maintain optimal balanced plant nutrition."
     ]
   },
-  "Potato___healthy": {
-    "disease_name": "Potato Healthy",
-    "description": "The potato plant is healthy, exhibits strong leaf and stem structure, and has no visible signs of pathogen activity.",
+  "Potato___Early_Blight": {
+    "disease_name": "Early Blight",
+    "description": "Early blight is caused by the fungus Alternaria solani. It affects leaves, stems, and tubers, producing dark target-like spots.",
     "symptoms": [
-      "Robust, green compound leaves with clean, unblemished leaf surfaces.",
-      "Thick, upright green stems.",
-      "Healthy root systems and firm, developing tubers under the soil."
+      "Dark brown spots with concentric rings (target board pattern) on older leaves.",
+      "Spots enlarge and cause leaf yellowing and dropping.",
+      "Leathery, sunken black spots on potato tubers."
     ],
     "treatment": [
-      "No disease treatment is necessary.",
-      "Continue standard cultivation practices, including hilling soil around the stems."
+      "Apply protectant fungicides like Mancozeb or Chlorothalonil.",
+      "Remove volunteer potato plants and nightshade weeds.",
+      "Apply organic mulch to reduce soil splash."
     ],
     "prevention": [
-      "Practice a 3-year crop rotation schedule.",
-      "Provide deep watering once a week rather than frequent shallow watering."
+      "Use high-quality, certified disease-free seed tubers.",
+      "Ensure proper crop spacing and avoid overhead watering.",
+      "Rotate with non-solanaceous crops (e.g., corn, grass)."
     ]
   },
-  "Tomato_Bacterial_spot": {
-    "disease_name": "Tomato Bacterial Spot",
-    "description": "Bacterial Spot is caused by several species of Xanthomonas. It attacks leaves, stems, and fruit, and spreads rapidly in warm, humid weather, resulting in defoliation and scarred fruit.",
+  "Potato___Healthy": {
+    "disease_name": "Healthy Potato",
+    "description": "The potato crop is healthy, showing vigorous green leaves and sturdy stems with no signs of blights or rot.",
     "symptoms": [
-      "Small, dark, water-soaked, greasy circular spots on leaves, often surrounded by a yellow halo.",
-      "Spots may merge, causing large areas of the leaf to dry out, turn brown, and drop off.",
-      "Small, dark, raised blisters on green fruit that eventually become brown, scab-like, and rough."
+      "Lush green, fully expanded leaves with no necrotic spots.",
+      "Sturdy upright stalks and healthy root systems.",
+      "Normal tuber skin coloration."
     ],
     "treatment": [
-      "Spray plants with a mix of copper fungicide and mancozeb weekly.",
-      "Remove heavily infected plants to stop the local spread of bacteria.",
-      "Avoid handling or pruning tomato plants when they are wet with dew or rain."
+      "No treatment required.",
+      "Ensure proper hilling (mounding soil around plants) and uniform watering."
     ],
     "prevention": [
-      "Purchase certified pathogen-free seeds or hot-water-treated seeds.",
-      "Implement drip irrigation or soaker hoses rather than overhead sprinklers.",
-      "Rotate crops away from tomatoes, peppers, and eggplants for at least 2 years."
+      "Scout fields weekly for symptoms.",
+      "Avoid excessive nitrogen fertilization late in the season.",
+      "Use clean irrigation water."
     ]
   },
-  "Tomato_Early_blight": {
-    "disease_name": "Tomato Early Blight",
-    "description": "Early Blight is a common fungal disease caused by Alternaria solani. It starts on the oldest leaves at the base of the plant and moves upwards, causing premature leaf drop and reducing yield.",
+  "Potato___Late_Blight": {
+    "disease_name": "Late Blight",
+    "description": "Late blight is caused by the oomycete Phytophthora infestans. It is highly destructive and thrives in cool, wet weather.",
     "symptoms": [
-      "Concentric, dark brown target-like rings on older leaves, usually starting at the bottom.",
-      "Yellowing of leaf tissue surrounding the spots, leading to leaves drying and dropping.",
-      "Sunken, leathery, dark spots with concentric rings at the stem end of the tomato fruits."
+      "Dark, water-soaked lesions on leaves that expand rapidly.",
+      "White, fuzzy fungal growth on the underside of leaves in wet conditions.",
+      "Tubers develop brown-to-purple dry rot and decay quickly."
     ],
     "treatment": [
-      "Apply protective fungicides containing chlorothalonil, mancozeb, or copper.",
-      "Prune away the lower 12-18 inches of leaves to prevent soil-borne spores from splashing onto foliage.",
-      "Apply mulch around the base of the plants to create a barrier against soil-splashed spores."
+      "Spray systemic fungicides containing Metalaxyl or Dimethomorph immediately.",
+      "Destroy all infected crops and piles of discarded potatoes.",
+      "Harvest only in dry weather and store carefully."
     ],
     "prevention": [
-      "Maintain a wide spacing (at least 2-3 feet) between plants for excellent air circulation.",
-      "Water at the base of the plant rather than from above.",
-      "Rotate crops annually and clean up all tomato debris at the end of the season."
+      "Plant late blight-resistant potato cultivars.",
+      "Use certified disease-free seed potato tubers.",
+      "Ensure good soil cover (hilling) to protect developing tubers from spores."
     ]
   },
-  "Tomato_Late_blight": {
-    "disease_name": "Tomato Late Blight",
-    "description": "Tomato Late Blight is a devastating disease caused by the water mold Phytophthora infestans. It thrives in cool, wet conditions and can rapidly destroy leaves, stems, and fruit across entire fields.",
+  "Rice___Brown_Spot": {
+    "disease_name": "Brown Spot",
+    "description": "Brown spot is a fungal disease caused by Bipolaris oryzae. It often targets crops growing in nutrient-deficient or poorly drained soils.",
     "symptoms": [
-      "Large, rapidly expanding dark brown or black water-soaked lesions on leaves and stems.",
-      "A delicate, white, fuzzy growth on the underside of infected leaves in high humidity.",
-      "Large, firm, greasy-looking golden-brown patches on tomato fruits that turn mushy and rot."
+      "Small, oval-to-circular brown lesions with yellow halos on leaves.",
+      "Large lesions dry up and cover the entire leaf blade.",
+      "Brown discoloration on rice grains leading to poor seed quality."
     ],
     "treatment": [
-      "Apply targeted late-blight fungicides immediately (such as chlorothalonil, copper, or mefenoxam).",
-      "Uproot and destroy infected plants completely (bag and discard; do not leave in field).",
-      "Monitor local weather alerts for late blight warnings to apply preventative sprays in advance."
+      "Apply trace element fertilizers (specifically zinc and potassium).",
+      "Spray fungicides like Propiconazole or Hexaconazole if severity increases.",
+      "Practice proper soil drainage to avoid waterlogging."
     ],
     "prevention": [
-      "Grow resistant tomato varieties (e.g., Mountain Magic, Defiant, Iron Lady).",
-      "Avoid overhead watering and plant in sites with full sun and excellent drainage.",
-      "Do not plant tomatoes near potatoes, as the pathogen easily jumps between the two."
+      "Use certified disease-resistant rice varieties.",
+      "Apply balanced NPK fertilization alongside micronutrients.",
+      "Keep fields weed-free to prevent spore transfer."
     ]
   },
-  "Tomato_Leaf_Mold": {
-    "disease_name": "Tomato Leaf Mold",
-    "description": "Leaf Mold is caused by the fungus Passalora fulva (formerly Fulvia fulva). It is highly prevalent in greenhouse environments with high humidity and poor ventilation, causing leaves to wither and die.",
+  "Rice___Healthy": {
+    "disease_name": "Healthy Rice",
+    "description": "The rice crop shows excellent vegetative growth, with erect green leaves and uniform plant height, indicating no symptoms of blast or leaf spots.",
     "symptoms": [
-      "Pale green or yellow spots on the upper surfaces of older leaves.",
-      "An olive-green to greyish-brown velvety mold growth on the corresponding leaf undersides.",
-      "Infected leaves curl, wither, and drop, occasionally affecting the flowers and fruit."
+      "Erect, uniform green leaf blades with no visible lesions.",
+      "Healthy root system in flooded or moist soils.",
+      "Normal panicle development during heading."
     ],
     "treatment": [
-      "Spray protective fungicides such as copper or chlorothalonil at the first sign of leaf mold.",
-      "Prune the lower leaves and sucker stems to improve light penetration and air movement.",
-      "Increase temperature and ventilation in greenhouses to reduce humidity."
+      "No treatment required.",
+      "Maintain consistent shallow flooding depth (2-5 cm) as per crop stage."
     ],
     "prevention": [
-      "Maintain greenhouse relative humidity below 85% using fans and heaters.",
-      "Grow leaf-mold resistant tomato cultivars.",
-      "Water early in the morning and avoid wetting the foliage."
+      "Monitor water quality and maintain proper NPK ratios.",
+      "Remove alternative grass hosts from field bunds.",
+      "Implement line planting for uniform light and aeration."
     ]
   },
-  "Tomato_Septoria_leaf_spot": {
-    "disease_name": "Tomato Septoria Leaf Spot",
-    "description": "Septoria Leaf Spot is caused by the fungus Septoria lycopersici. While it doesn't rot the fruit directly, it causes severe defoliation, which stunts plant growth and exposes fruit to sunscald.",
+  "Rice___Leaf_Blast": {
+    "disease_name": "Rice Leaf Blast",
+    "description": "Leaf blast is a highly critical fungal disease caused by Magnaporthe oryzae. It can lead to severe crop failure in susceptible varieties under humid conditions.",
     "symptoms": [
-      "Numerous small, circular spots (1/16 to 1/8 inch) with dark brown borders and grey-to-tan centers.",
-      "Tiny, black pimple-like structures (fruiting bodies called pycnidia) inside the centers of the spots.",
-      "Lower leaves turn yellow, shrivel, and fall off, progressing from the bottom up."
+      "Diamond-shaped (spindle) lesions on leaves with gray centers and brown borders.",
+      "Lesions enlarge and coalesce, burning or drying the leaves.",
+      "Lesions can also appear on the collar of leaves."
     ],
     "treatment": [
-      "Apply fungicides containing chlorothalonil, mancozeb, or copper on a 7-10 day schedule.",
-      "Mulch around the base of the plant to prevent spores from splashing up from the soil.",
-      "Prune infected lower leaves and wash hands and tools before touching healthy plants."
+      "Apply systemic fungicides like Tricyclazole or Kasugamycin immediately.",
+      "Reduce nitrogen fertilizer application to limit disease spread.",
+      "Maintain continuous standing water in the field to buffer temperature."
     ],
     "prevention": [
-      "Incorporate a 2 to 3-year crop rotation cycle without tomatoes, potatoes, or eggplants.",
-      "Water using drip irrigation or soaker hoses to avoid wetting the leaves.",
-      "Clear all plant residues from the garden at the end of the harvest season."
+      "Sow blast-resistant varieties like IR36 or local resistant hybrids.",
+      "Avoid late sowing to bypass optimal weather for fungal growth.",
+      "Use silicon-based amendments to strengthen plant resistance."
     ]
   },
-  "Tomato_Spider_mites_Two_spotted_spider_mite": {
-    "disease_name": "Tomato Spider Mites (Two-spotted Mite)",
-    "description": "The two-spotted spider mite (Tetranychus urticae) is a tiny pest that feeds on plant cells, sucking sap from leaf undersides. They thrive in dry, hot weather and can cause rapid leaf damage.",
+  "Rice___Neck_Blast": {
+    "disease_name": "Rice Neck Blast",
+    "description": "Neck blast occurs when Magnaporthe oryzae infects the neck node of the panicle, leading to broken necks and empty grain hulls.",
     "symptoms": [
-      "Fine yellow-to-white stippling (tiny dots) on the upper surface of leaves.",
-      "Leaves become bronze, yellow, dry, and papery, eventually dropping off.",
-      "Very fine webbing on the undersides of leaves, petioles, and stems under severe infestation."
+      "Grayish-brown lesions on the neck node of the panicle.",
+      "Neck rots and breaks, causing the panicle to fall over.",
+      "Grains fail to fill, appearing white, empty, and light."
     ],
     "treatment": [
-      "Spray leaf undersides with insecticidal soaps, horticultural oils, or neem oil.",
-      "For severe infestations, apply specific miticides/acaricides.",
-      "Introduce natural predators like predatory mites (Phytoseiulus persimilis) or ladybugs."
+      "Spray systemic fungicides like Tricyclazole or Isoprothiolane at late booting/early heading stage.",
+      "Harvest early if neck blast is widespread to save remaining grains.",
+      "Ensure fields are not dried out during flowering."
     ],
     "prevention": [
-      "Keep plants adequately watered; dry, dusty conditions favor mite reproduction.",
-      "Hose down plants with a strong stream of water periodically to wash away mites and webs.",
-      "Weed the surrounding garden area, as weeds can host spider mites."
+      "Avoid excessive nitrogen application at booting stage.",
+      "Use high-quality silicon amendments.",
+      "Practice thorough residue removal and field sterilization."
     ]
   },
-  "Tomato__Target_Spot": {
-    "disease_name": "Tomato Target Spot",
-    "description": "Target Spot is caused by the fungus Corynespora cassiicola. It attacks leaves, stems, and fruit, and is favored by warm temperatures and prolonged leaf wetness, causing circular lesions.",
+  "Sugarcane___Bacterial_Blight": {
+    "disease_name": "Bacterial Blight",
+    "description": "Bacterial leaf blight of sugarcane is caused by Xanthomonas albilineans. It targets the vascular system of the cane, leading to leaf scalding and stalk death.",
     "symptoms": [
-      "Small, water-soaked leaf spots that expand into circular, brown lesions with concentric rings.",
-      "Unlike Early Blight, spots are smaller and distributed throughout the upper and lower canopy.",
-      "Sunken, circular, dark brown lesions on the tomato fruit, often with dark centers."
+      "Cream-to-yellow stripes on leaves parallel to veins.",
+      "Stripes turn reddish-brown and leaves wither from the tip.",
+      "Internal stalk tissue shows red vascular bundles when cut."
     ],
     "treatment": [
-      "Apply fungicides such as chlorothalonil, copper, or strobilurins (e.g., azoxystrobin).",
-      "Prune the middle and lower branches to decrease humidity in the plant canopy.",
-      "Remove and destroy infected plant parts immediately."
+      "Use hot water treatment (50°C for 2 hours) on seed canes before planting.",
+      "Spray copper hydroxide bactericide to reduce surface bacteria.",
+      "Isolate and burn infected crop clumps immediately."
     ],
     "prevention": [
-      "Space plants properly to optimize airflow and sunlight penetration.",
-      "Avoid overhead irrigation; water close to the soil surface.",
-      "Practice crop rotation and manage weeds in and around the tomato crop."
+      "Plant disease-resistant sugarcane varieties.",
+      "Sanitize knives and harvesting tools with disinfectants between plants.",
+      "Improve field drainage to prevent bacterial transport in water."
     ]
   },
-  "Tomato__Tomato_YellowLeaf__Curl_Virus": {
-    "disease_name": "Tomato Yellow Leaf Curl Virus",
-    "description": "Tomato Yellow Leaf Curl Virus (TYLCV) is a destructive viral disease transmitted by silverleaf whiteflies (Bemisia tabaci). It causes severe growth stunting and prevents the plant from producing fruit.",
+  "Sugarcane___Healthy": {
+    "disease_name": "Healthy Sugarcane",
+    "description": "The sugarcane stalks are robust and filled, foliage is dark green, with no signs of smut, red rot, or wilt.",
     "symptoms": [
-      "New leaf growth is severely reduced, showing upward cupping and yellow margins.",
-      "Leaves become thick, crumpled, leathery, and smaller than normal.",
-      "Severe stunting of the plant, with flowers aborting and falling off before fruit can set."
+      "Wide, green, healthy leaves with clean midribs.",
+      "Thick, filled, and hard stalks with normal internode length.",
+      "Healthy root system and normal tillering."
     ],
     "treatment": [
-      "There is no chemical cure for viral plant infections. Infected plants must be pulled and destroyed.",
-      "Control the whitefly vector using systemic insecticides, insecticidal soaps, or neem oil.",
-      "Place yellow sticky cards near plants to monitor and catch adult whiteflies."
+      "No active treatment required.",
+      "Apply timely nitrogen and potassium fertilizers based on growth phase."
     ],
     "prevention": [
-      "Plant virus-resistant tomato varieties (e.g., TY-resistant cultivars).",
-      "Use floating row covers or fine insect netting to protect young plants from whiteflies.",
-      "Maintain a weed-free zone around the field, as weeds can harbor both the virus and whiteflies."
+      "Practice regular earthing up to support cane weight.",
+      "Remove dry leaves (detrash) at 5th and 7th months to allow aeration.",
+      "Monitor for early pests like borers."
     ]
   },
-  "Tomato__Tomato_mosaic_virus": {
-    "disease_name": "Tomato Mosaic Virus",
-    "description": "Tomato Mosaic Virus (ToMV) is a highly stable and contagious plant virus. It spreads through mechanical contact (hands, tools, brushing against plants) and can survive in seeds, soil, and plant debris for years.",
+  "Sugarcane___Red_Rot": {
+    "disease_name": "Red Rot",
+    "description": "Red rot is caused by the fungus Colletotrichum falcatum. It is known as the 'cancer of sugarcane' and causes severe internal rot.",
     "symptoms": [
-      "Leaves display light and dark green mottled patches, creating a mosaic pattern.",
-      "Leaves may look blistered, puckered, or highly distorted ('fern-leaf' or string-like shapes).",
-      "Internal browning of the fruit wall and yellow rings or patches on the fruit surface."
+      "Third or fourth leaf shows yellowing and dry margins.",
+      "Splitting the cane reveals internal red pith with white cross bands.",
+      "Characteristic alcoholic smell from affected split canes."
     ],
     "treatment": [
-      "There is no chemical treatment for viral infections. Remove and destroy infected plants immediately.",
-      "Disinfect hands and tools with non-fat dry milk solution, soap, or a sanitizing solution after handling plants."
+      "Uproot the entire infected clump, spray the spot with lime, and burn the residue.",
+      "Apply Trichoderma bio-fungicide to the soil.",
+      "Harvest the field immediately if infection is widespread."
     ],
     "prevention": [
-      "Purchase certified virus-free seeds and seedlings.",
-      "Do not smoke or handle tobacco products near tomato plants, as tobacco mosaic virus is closely related.",
-      "Practice strict sanitation and wash hands thoroughly before working in the garden."
+      "Grow resistant varieties (like Co 86032 or local equivalents).",
+      "Practice crop rotation with rice or green manure crops.",
+      "Use healthy seed canes treated with bio-agents."
     ]
   },
-  "Tomato_healthy": {
-    "disease_name": "Tomato Healthy",
-    "description": "The tomato plant is healthy, exhibits strong leaf, stem, and root growth, and has no visible symptoms of disease or pest infestations.",
+  "Wheat___Brown_Rust": {
+    "disease_name": "Brown Rust",
+    "description": "Brown rust (leaf rust) is caused by Puccinia triticina. It is the most common wheat rust, forming small orange-brown pustules on leaf blades.",
     "symptoms": [
-      "Lush, dark-green compound leaves with clean margins and no spotting.",
-      "Strong, sturdy main stem and branches.",
-      "Smooth, uniform green or red fruit developing normally without blemish."
+      "Small, round, orange-brown pustules scattered randomly on leaves.",
+      "Pustules rub off as a brown powder (spores) on fingers.",
+      "Rapid defoliation under warm (15-25°C) and humid weather."
     ],
     "treatment": [
-      "No disease treatment is necessary.",
-      "Maintain consistent soil moisture, support plants with stakes or cages, and weed regularly."
+      "Spray propiconazole or tebuconazole fungicides at the first appearance of rust.",
+      "Ensure balanced potash nutrition to improve plant immunity.",
+      "Avoid high seeding density to reduce humidity inside canopy."
     ],
     "prevention": [
-      "Apply a balanced tomato fertilizer at planting and when fruit begins to set.",
-      "Mulch soil to conserve moisture and prevent soil splash-back onto leaves."
+      "Cultivate resistant wheat varieties.",
+      "Sow early to avoid warm temperatures during grain filling.",
+      "Control volunteer wheat crops that carry the spores over summer."
+    ]
+  },
+  "Wheat___Healthy": {
+    "disease_name": "Healthy Wheat",
+    "description": "The wheat crop is in excellent condition, leaves are uniform green with no powdery mildew or rust pustules.",
+    "symptoms": [
+      "Uniform green leaf blades without yellowing or spots.",
+      "Strong erect stems and healthy green spikes.",
+      "No signs of wilting or head abnormalities."
+    ],
+    "treatment": [
+      "No treatment required.",
+      "Ensure timely irrigation during critical stages like crown root initiation and flowering."
+    ],
+    "prevention": [
+      "Maintain weed-free boundaries.",
+      "Apply nitrogen fertilizer in splits to prevent nitrogen stress.",
+      "Ensure proper crop rotation."
+    ]
+  },
+  "Wheat___Yellow_Rust": {
+    "disease_name": "Yellow Rust",
+    "description": "Yellow rust (stripe rust) is caused by Puccinia striiformis. It forms yellow stripes of pustules on leaves, thriving in cooler conditions.",
+    "symptoms": [
+      "Yellow-to-orange pustules arranged in narrow, long stripes along leaf veins.",
+      "Affected leaf blades dry up and turn brown rapidly.",
+      "Stunted plant growth and shriveled grains."
+    ],
+    "treatment": [
+      "Apply systemic fungicides such as Propiconazole or Triadimefon immediately.",
+      "Increase potassium fertilizer to support recovery.",
+      "Scout and isolate early infected patches."
+    ],
+    "prevention": [
+      "Plant yellow rust-resistant wheat varieties.",
+      "Avoid late sowing to minimize exposure to cool humid conditions.",
+      "Ensure proper crop rotation."
     ]
   }
 }

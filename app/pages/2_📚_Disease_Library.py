@@ -28,37 +28,98 @@ st.markdown(t('lib_subtitle'))
 try:
     kb = load_knowledge_base()
     
+    # Process Voice command input
+    voice_query = st.query_params.get("disease_voice", "")
+    if voice_query:
+        voice_query_lower = voice_query.lower()
+        matched_class = None
+        for k, v in kb.items():
+            disease_name = v['disease_name'].lower()
+            if voice_query_lower in disease_name or voice_query_lower in k.lower():
+                matched_class = k
+                break
+        
+        if matched_class:
+            if "corn" in matched_class.lower():
+                st.session_state.disease_lib_crop = "Corn"
+            elif "potato" in matched_class.lower():
+                st.session_state.disease_lib_crop = "Potato"
+            elif "rice" in matched_class.lower():
+                st.session_state.disease_lib_crop = "Rice"
+            elif "sugarcane" in matched_class.lower():
+                st.session_state.disease_lib_crop = "Sugarcane"
+            elif "wheat" in matched_class.lower():
+                st.session_state.disease_lib_crop = "Wheat"
+            else:
+                st.session_state.disease_lib_crop = "All"
+                
+            st.session_state.disease_lib_class = matched_class
+            
+        st.query_params.pop("disease_voice", None)
+        
     # Crop filter
-    crops_options = ["All", "Tomato", "Potato", "Pepper"]
+    crops_options = ["All", "Corn", "Potato", "Rice", "Sugarcane", "Wheat"]
     crops_labels = {
         "All": t('all_crops'),
-        "Tomato": t('crop_tomato_opt'),
+        "Corn": t('crop_corn_opt'),
         "Potato": t('crop_potato_opt'),
-        "Pepper": t('crop_pepper_opt')
+        "Rice": t('crop_rice_opt'),
+        "Sugarcane": t('crop_sugarcane_opt'),
+        "Wheat": t('crop_wheat_opt')
     }
+    
+    if "disease_lib_crop" not in st.session_state:
+        st.session_state.disease_lib_crop = "All"
+        
+    crop_filter_idx = crops_options.index(st.session_state.disease_lib_crop)
     crop_filter = st.selectbox(
         t('filter_crop'), 
         options=crops_options,
-        format_func=lambda x: crops_labels[x]
+        index=crop_filter_idx,
+        format_func=lambda x: crops_labels[x],
+        key="disease_lib_crop"
     )
     
     # Filter classes
     filtered_classes = {}
     for k, v in kb.items():
-        if crop_filter == "Tomato" and "tomato" not in k.lower():
+        if crop_filter == "Corn" and "corn" not in k.lower():
             continue
         elif crop_filter == "Potato" and "potato" not in k.lower():
             continue
-        elif crop_filter == "Pepper" and "pepper" not in k.lower():
+        elif crop_filter == "Rice" and "rice" not in k.lower():
+            continue
+        elif crop_filter == "Sugarcane" and "sugarcane" not in k.lower():
+            continue
+        elif crop_filter == "Wheat" and "wheat" not in k.lower():
             continue
         filtered_classes[k] = v
         
-    class_choice = st.selectbox(
-        t('select_profile'),
-        options=list(filtered_classes.keys()),
-        format_func=lambda x: filtered_classes[x]['disease_name']
-    )
-    
+    # Determine default class choice index
+    default_choice_idx = 0
+    if "disease_lib_class" in st.session_state and st.session_state.disease_lib_class in filtered_classes:
+        default_choice_idx = list(filtered_classes.keys()).index(st.session_state.disease_lib_class)
+        
+    col_sel, col_mic = st.columns([6, 1])
+    with col_sel:
+        class_choice = st.selectbox(
+            t('select_profile'),
+            options=list(filtered_classes.keys()),
+            index=default_choice_idx,
+            format_func=lambda x: filtered_classes[x]['disease_name'],
+            key="disease_lib_class"
+        )
+    with col_mic:
+        st.markdown("<div style='height: 28px;'></div>", unsafe_allow_html=True)
+        from app.components.layout import render_voice_search
+        render_voice_search(
+            target_placeholder="",
+            language_code=st.session_state.get("language", "en"),
+            key="disease_search",
+            use_query_param=True,
+            query_param_name="disease_voice"
+        )
+        
     if class_choice:
         profile = filtered_classes[class_choice]
         is_healthy = "healthy" in class_choice.lower()
@@ -67,6 +128,29 @@ try:
         lib_tab_profile, lib_tab_shop = st.tabs([t('tab_profile'), t('tab_shop_recs')])
         
         with lib_tab_profile:
+            # Render TTS Narrator for selected Profile
+            lang = st.session_state.get("language", "en")
+            disease_name = profile['disease_name']
+            status_lbl = t('status_healthy_lbl') if is_healthy else t('status_diseased_lbl')
+            desc = profile['description']
+            
+            # Truncate description for narration
+            desc_sentences = desc.split(".")
+            short_desc = ". ".join(desc_sentences[:2]) + "." if len(desc_sentences) > 0 else desc
+            
+            symptoms_txt = ", ".join(profile.get('symptoms', []))
+            treatment_txt = ", ".join(profile.get('treatment', []))
+            
+            if lang == "hi":
+                tts_text = f"रोग प्रोफ़ाइल: {disease_name}। स्थिति: {status_lbl}। विवरण: {short_desc} लक्षण: {symptoms_txt}। अनुशंसित उपचार: {treatment_txt}।"
+            elif lang == "es":
+                tts_text = f"Perfil de enfermedad: {disease_name}. Estado: {status_lbl}. Descripción: {short_desc} Síntomas: {symptoms_txt}. Tratamientos recomendados: {treatment_txt}."
+            else:
+                tts_text = f"Disease Profile: {disease_name}. Status: {status_lbl}. Description: {short_desc} Symptoms: {symptoms_txt}. Recommended treatments: {treatment_txt}."
+            
+            from app.components.layout import render_voice_player
+            render_voice_player(tts_text, lang, key=f"profile_{class_choice}")
+            
             col_info, col_bullets = st.columns([1.2, 1])
             
             with col_info:

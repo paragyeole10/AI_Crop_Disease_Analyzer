@@ -7,29 +7,31 @@ class CropDiseasePredictor:
     def __init__(self, model_path=None):
         if model_path is None:
             config = load_config()
-            rel_path = config.get("model", {}).get("save_path", "models/crop_disease_model.h5")
+            rel_path = config.get("model", {}).get("save_path", "models/mobilenet_crop_disease.keras")
             self.model_path = get_absolute_path(rel_path)
         else:
             self.model_path = model_path
             
         self.model = None
-        # Class names ordered alphabetically as loaded by tf.keras.utils.image_dataset_from_directory
+        # Class names ordered alphabetically
         self.class_names = [
-            'Pepper__bell___Bacterial_spot',
-            'Pepper__bell___healthy',
-            'Potato___Early_blight',
-            'Potato___Late_blight',
-            'Potato___healthy',
-            'Tomato_Bacterial_spot',
-            'Tomato_Early_blight',
-            'Tomato_Late_blight',
-            'Tomato_Leaf_Mold',
-            'Tomato_Septoria_leaf_spot',
-            'Tomato_Spider_mites_Two_spotted_spider_mite',
-            'Tomato__Target_Spot',
-            'Tomato__Tomato_YellowLeaf__Curl_Virus',
-            'Tomato__Tomato_mosaic_virus',
-            'Tomato_healthy'
+            "Corn___Common_Rust",
+            "Corn___Gray_Leaf_Spot",
+            "Corn___Healthy",
+            "Corn___Northern_Leaf_Blight",
+            "Potato___Early_Blight",
+            "Potato___Healthy",
+            "Potato___Late_Blight",
+            "Rice___Brown_Spot",
+            "Rice___Healthy",
+            "Rice___Leaf_Blast",
+            "Rice___Neck_Blast",
+            "Sugarcane___Bacterial_Blight",
+            "Sugarcane___Healthy",
+            "Sugarcane___Red_Rot",
+            "Wheat___Brown_Rust",
+            "Wheat___Healthy",
+            "Wheat___Yellow_Rust"
         ]
 
     def load_model(self):
@@ -61,3 +63,25 @@ class CropDiseasePredictor:
         confidence = float(predictions[0][predicted_idx])
         predicted_class = self.class_names[predicted_idx]
         return predicted_class, confidence
+
+    def predict_top_k(self, preprocessed_image, k=3):
+        """
+        Run inference and return top K predicted classes and their confidence scores.
+        
+        Parameters:
+        - preprocessed_image: preprocessed image numpy array of shape (1, 224, 224, 3)
+        - k: number of top predictions to return
+        
+        Returns:
+        - list of tuples (class_name, confidence) sorted by confidence descending
+        """
+        model = self.load_model()
+        predictions = model.predict(preprocessed_image)
+        # Get indices of top K predictions sorted by confidence descending
+        top_k_indices = np.argsort(predictions[0])[-k:][::-1]
+        results = []
+        for idx in top_k_indices:
+            class_name = self.class_names[idx]
+            conf = float(predictions[0][idx])
+            results.append((class_name, conf))
+        return results

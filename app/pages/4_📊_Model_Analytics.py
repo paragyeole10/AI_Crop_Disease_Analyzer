@@ -13,7 +13,7 @@ metrics_rel_path = config.get("paths", {}).get("metrics_json", "assets/model_met
 metrics_path = get_absolute_path(metrics_rel_path)
 
 st.markdown("## 📊 Model Performance & Training Analytics")
-st.markdown("View training metrics, accuracy curves, and class confusion matrices computed on the PlantVillage dataset.")
+st.markdown("View training metrics, accuracy curves, and class confusion matrices computed on agricultural crop leaf datasets.")
 
 if not os.path.exists(metrics_path):
     st.info("💡 **No Analytics Data Found**: Training metrics files will be displayed here once you complete running `python train.py` on your machine.")

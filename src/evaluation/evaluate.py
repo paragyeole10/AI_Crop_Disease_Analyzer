@@ -81,7 +81,7 @@ def evaluate_model(model, history, test_data, all_dirs, training_duration, epoch
     
     # 2. Confusion Matrix
     fig, ax = plt.subplots(figsize=(12, 10))
-    display_labels = [c.replace("Tomato__", "T_").replace("Potato___", "P_").replace("Pepper__bell___", "PB_") for c in all_dirs]
+    display_labels = [c.replace("Corn___", "C_").replace("Potato___", "P_").replace("Rice___", "R_").replace("Sugarcane___", "S_").replace("Wheat___", "W_") for c in all_dirs]
     cm = confusion_matrix(y_test, y_pred)
     
     disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=display_labels)

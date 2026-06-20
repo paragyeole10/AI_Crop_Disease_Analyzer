@@ -11,7 +11,7 @@ model:
   weights: "imagenet"
   input_shape: [224, 224, 3]
   dropout_rate: 0.2
-  save_path: "models/crop_disease_model.h5"
+  save_path: "models/mobilenet_crop_disease.keras"
 
 training:
   epochs: 15

@@ -3,10 +3,12 @@ import streamlit as st
 TRANSLATIONS = {
     "en": {
         "supported_crops": "Supported Crops",
-        "crop_tomato": "🍅 Tomato (11 classes)",
+        "crop_corn": "🌽 Corn (4 classes)",
         "crop_potato": "🥔 Potato (3 classes)",
-        "crop_pepper": "🫑 Pepper Bell (2 classes)",
-        "release_version": "Phase 1 - Release v1.0.0",
+        "crop_rice": "🌾 Rice (4 classes)",
+        "crop_sugarcane": "🎋 Sugarcane (3 classes)",
+        "crop_wheat": "🌾 Wheat (3 classes)",
+        "release_version": "Phase 2 - Release v2.0.0",
         "app_title": "AgriVision AI",
         "app_subtitle": "Smart Crop Health Intelligence",
         
@@ -29,12 +31,12 @@ TRANSLATIONS = {
         "step2_desc": "The system automatically normalizes the image and runs inference on our fine-tuned MobileNetV2 model.",
         "step3_title": "Step 3: Access diagnostic data",
         "step3_desc": "Review the diagnosed disease description, confidence scores, symptoms, and prevention instructions.",
-        "model_warning": "⚠️ **ML Model Warning**: The neural network model `models/crop_disease_model.h5` is not trained yet. The scanner page will not work until you run `python train.py` in your terminal to train the model.",
+        "model_warning": "⚠️ **ML Model Warning**: The neural network model `models/mobilenet_crop_disease.keras` is not loaded. The scanner page will not work until you ensure the model exists in the models directory.",
         
         # Scan Leaf
         "scan_title": "🔬 Crop Disease Scanner",
-        "scan_subtitle": "Upload a crop leaf image (Tomato, Potato, or Pepper Bell) to identify diseases and load medical treatments.",
-        "model_offline": "❌ **AI Inference Engine Offline**: The file `models/crop_disease_model.h5` is missing. You must run the training script (`train.py`) first to generate the model before scanning leaves.",
+        "scan_subtitle": "Upload a crop leaf image (Corn, Potato, Rice, Sugarcane, or Wheat) to identify diseases and load medical treatments.",
+        "model_offline": "❌ **AI Inference Engine Offline**: The file `models/mobilenet_crop_disease.keras` is missing. Please place the trained model in the `models/` directory before scanning leaves.",
         "choose_image": "Choose a crop leaf image...",
         "image_help": "Supported formats: JPG, JPEG, PNG",
         "uploaded_caption": "Uploaded Crop Leaf",
@@ -119,9 +121,11 @@ TRANSLATIONS = {
         
         # Crops
         "all_crops": "All Crops",
-        "crop_tomato_opt": "Tomato 🍅",
+        "crop_corn_opt": "Corn 🌽",
         "crop_potato_opt": "Potato 🥔",
-        "crop_pepper_opt": "Pepper Bell 🫑",
+        "crop_rice_opt": "Rice 🌾",
+        "crop_sugarcane_opt": "Sugarcane 🎋",
+        "crop_wheat_opt": "Wheat 🌾",
 
         # Stepper
         "stepper_placed": "Order Placed",
@@ -159,14 +163,24 @@ TRANSLATIONS = {
 
         # Badges
         "recommended_badge": "⭐ RECOMMENDED",
-        "suitable_for": "Suitable for"
+        "suitable_for": "Suitable for",
+
+        # Voice UI
+        "voice_reader_title": "🔊 Audio Guide",
+        "voice_play": "Listen",
+        "voice_pause": "Pause",
+        "voice_stop": "Stop",
+        "voice_speed": "Speed",
+        "voice_mic_tooltip": "Search by Voice"
     },
     "es": {
         "supported_crops": "Cultivos Soportados",
-        "crop_tomato": "🍅 Tomate (11 clases)",
+        "crop_corn": "🌽 Maíz (4 clases)",
         "crop_potato": "🥔 Patata (3 clases)",
-        "crop_pepper": "🫑 Pimiento Morrón (2 clases)",
-        "release_version": "Fase 1 - Versión v1.0.0",
+        "crop_rice": "🌾 Arroz (4 clases)",
+        "crop_sugarcane": "🎋 Caña de azúcar (3 clases)",
+        "crop_wheat": "🌾 Trigo (3 clases)",
+        "release_version": "Fase 2 - Versión v2.0.0",
         "app_title": "AgriVision AI",
         "app_subtitle": "Inteligencia de Salud de Cultivos",
         
@@ -189,12 +203,12 @@ TRANSLATIONS = {
         "step2_desc": "El sistema normaliza automáticamente la imagen y ejecuta la inferencia en nuestro modelo MobileNetV2 ajustado.",
         "step3_title": "Paso 3: Acceder a datos de diagnóstico",
         "step3_desc": "Revise la descripción de la enfermedad diagnosticada, las puntuaciones de confianza, los síntomas y las instrucciones de prevención.",
-        "model_warning": "⚠️ **Advertencia del modelo de ML**: El modelo de red neuronal `models/crop_disease_model.h5` aún no está entrenado. La página del escáner no funcionará hasta que ejecute `python train.py` en su terminal para entrenar el modelo.",
+        "model_warning": "⚠️ **Advertencia del modelo de ML**: El modelo de red neuronal `models/mobilenet_crop_disease.keras` no está cargado. La página del escáner no funcionará hasta que se asegure de que el modelo existe en el directorio models.",
         
         # Scan Leaf
         "scan_title": "🔬 Escáner de Enfermedades de Cultivos",
-        "scan_subtitle": "Suba una imagen de la hoja del cultivo (tomate, patata o pimiento morrón) para identificar enfermedades y cargar tratamientos médicos.",
-        "model_offline": "❌ **Motor de inferencia de IA fuera de línea**: Falta el archivo `models/crop_disease_model.h5`. Debe ejecutar el script de entrenamiento (`train.py`) primero para generar el modelo antes de escanear hojas.",
+        "scan_subtitle": "Suba una imagen de la hoja del cultivo (Maíz, Patata, Arroz, Caña de azúcar o Trigo) para identificar enfermedades y cargar tratamientos médicos.",
+        "model_offline": "❌ **Motor de inferencia de IA fuera de línea**: Falta el archivo `models/mobilenet_crop_disease.keras`. Coloque el modelo entrenado en el directorio `models/` antes de escanear hojas.",
         "choose_image": "Elija una imagen de hoja de cultivo...",
         "image_help": "Formatos soportados: JPG, JPEG, PNG",
         "uploaded_caption": "Hoja de Cultivo Subida",
@@ -279,9 +293,11 @@ TRANSLATIONS = {
         
         # Crops
         "all_crops": "Todos los Cultivos",
-        "crop_tomato_opt": "Tomate 🍅",
+        "crop_corn_opt": "Maíz 🌽",
         "crop_potato_opt": "Patata 🥔",
-        "crop_pepper_opt": "Pimiento Morrón 🫑",
+        "crop_rice_opt": "Arroz 🌾",
+        "crop_sugarcane_opt": "Caña de azúcar 🎋",
+        "crop_wheat_opt": "Trigo 🌾",
 
         # Stepper
         "stepper_placed": "Pedido Realizado",
@@ -319,14 +335,24 @@ TRANSLATIONS = {
 
         # Badges
         "recommended_badge": "⭐ RECOMENDADO",
-        "suitable_for": "Adecuado para"
+        "suitable_for": "Adecuado para",
+
+        # Voice UI
+        "voice_reader_title": "🔊 Guía de Audio",
+        "voice_play": "Escuchar",
+        "voice_pause": "Pausar",
+        "voice_stop": "Detener",
+        "voice_speed": "Velocidad",
+        "voice_mic_tooltip": "Buscar por voz"
     },
     "hi": {
         "supported_crops": "सहायक फसलें",
-        "crop_tomato": "🍅 टमाटर (11 श्रेणियां)",
+        "crop_corn": "🌽 मक्का (4 श्रेणियां)",
         "crop_potato": "🥔 आलू (3 श्रेणियां)",
-        "crop_pepper": "🫑 शिमला मिर्च (2 श्रेणियां)",
-        "release_version": "चरण 1 - रिलीज़ v1.0.0",
+        "crop_rice": "🌾 चावल (4 श्रेणियां)",
+        "crop_sugarcane": "🎋 गन्ना (3 श्रेणियां)",
+        "crop_wheat": "🌾 गेहूं (3 श्रेणियां)",
+        "release_version": "चरण 2 - रिलीज़ v2.0.0",
         "app_title": "एग्रीविज़न एआई",
         "app_subtitle": "स्मार्ट फसल स्वास्थ्य खुफिया",
         
@@ -349,17 +375,17 @@ TRANSLATIONS = {
         "step2_desc": "सिस्टम स्वचालित रूप से छवि को सामान्य करता है और हमारे ठीक-ठीक ट्यून किए गए MobileNetV2 मॉडल पर परिणाम निकालता है।",
         "step3_title": "चरण 3: नैदानिक डेटा प्राप्त करें",
         "step3_desc": "निदान किए गए रोग विवरण, आत्मविश्वास स्कोर, लक्षण और रोकथाम निर्देशों की समीक्षा करें।",
-        "model_warning": "⚠️ **एमएल मॉडल चेतावनी**: न्यूरल नेटवर्क मॉडल `models/crop_disease_model.h5` अभी प्रशिक्षित नहीं है। जब तक आप मॉडल को प्रशिक्षित करने के लिए अपने टर्मिनल में `python train.py` नहीं चलाते, तब तक स्कैनर पेज काम नहीं करेगा।",
+        "model_warning": "⚠️ **एमएल मॉडल चेतावनी**: न्यूरल नेटवर्क मॉडल `models/mobilenet_crop_disease.keras` लोड नहीं है। जब तक आप यह सुनिश्चित नहीं करते कि मॉडल फ़ाइल मौजूद है, तब तक स्कैनर पेज काम नहीं करेगा।",
         
         # Scan Leaf
         "scan_title": "🔬 फसल रोग स्कैनर",
-        "scan_subtitle": "रोगों की पहचान करने और चिकित्सा उपचार लोड करने के लिए एक फसल की पत्ती की छवि (टमाटर, आलू, या शिमला मिर्च) अपलोड करें।",
-        "model_offline": "❌ **एआई इंफरेंस इंजन ऑफलाइन**: फ़ाइल `models/crop_disease_model.h5` गायब है। पत्तियों को स्कैन करने से पहले मॉडल उत्पन्न करने के लिए आपको पहले प्रशिक्षण स्क्रिप्ट (`train.py`) चलानी होगी।",
+        "scan_subtitle": "रोगों की पहचान करने और चिकित्सा उपचार लोड करने के लिए एक फसल की पत्ती की छवि (मक्का, आलू, चावल, गन्ना, या गेहूं) अपलोड करें।",
+        "model_offline": "❌ **एआई इंफरेंस इंजन ऑफलाइन**: फ़ाइल `models/mobilenet_crop_disease.keras` गायब है। पत्तियों को स्कैन करने से पहले मॉडल को `models/` निर्देशिका में रखें।",
         "choose_image": "फसल की पत्ती की छवि चुनें...",
         "image_help": "समर्थित प्रारूप: JPG, JPEG, PNG",
         "uploaded_caption": "अपलोड की गई फसल की पत्ती",
         "analyzing": "पत्ती के पैटर्न का विश्लेषण किया जा रहा है...",
-        "status_healthy": "स्वस्थ",
+        "status_healthy": "स्वस्वस्थ",
         "status_diseased": "रोगग्रस्त / पैटर्न पाया गया",
         "identified_condition": "पहचानी गई फसल की स्थिति",
         "confidence_level": "विश्वास स्तर",
@@ -386,7 +412,7 @@ TRANSLATIONS = {
         "tab_profile": "📋 रोग प्रोफ़ाइल",
         "tab_shop_recs": "🛒 अनुशंसित उत्पाद खरीदें",
         "condition_status": "स्वास्थ्य स्थिति",
-        "status_healthy_lbl": "स्वस्थ",
+        "status_healthy_lbl": "स्वस्वस्थ",
         "status_diseased_lbl": "रोगग्रस्त",
         "description_lbl": "विवरण",
         "preventative_measures_lbl": "🛡️ निवारक उपाय",
@@ -439,9 +465,11 @@ TRANSLATIONS = {
         
         # Crops
         "all_crops": "सभी फसलें",
-        "crop_tomato_opt": "टमाटर 🍅",
+        "crop_corn_opt": "मक्का 🌽",
         "crop_potato_opt": "आलू 🥔",
-        "crop_pepper_opt": "शिमला मिर्च 🫑",
+        "crop_rice_opt": "चावल 🌾",
+        "crop_sugarcane_opt": "गन्ना 🎋",
+        "crop_wheat_opt": "गेहूं 🌾",
 
         # Stepper
         "stepper_placed": "ऑर्डर दिया गया",
@@ -479,7 +507,81 @@ TRANSLATIONS = {
 
         # Badges
         "recommended_badge": "⭐ अनुशंसित",
-        "suitable_for": "के लिए उपयुक्त"
+        "suitable_for": "के लिए उपयुक्त",
+
+        # Voice UI
+        "voice_reader_title": "🔊 ऑडियो गाइड",
+        "voice_play": "सुनें",
+        "voice_pause": "रोकें",
+        "voice_stop": "बंद करें",
+        "voice_speed": "गति",
+        "voice_mic_tooltip": "आवाज से खोजें"
+    },
+    "mr": {
+        "supported_crops": "सहाय्यक पिके",
+        "crop_corn": "🌽 मका (4 वर्ग)",
+        "crop_potato": "🥔 बटाटा (3 वर्ग)",
+        "crop_rice": "🌾 भात/तांदूळ (4 वर्ग)",
+        "crop_sugarcane": "🎋 ऊस (3 वर्ग)",
+        "crop_wheat": "🌾 गहू (3 वर्ग)",
+        "release_version": "टप्पा २ - रिलीझ v2.0.0",
+        "app_title": "अॅग्रीव्हिजन एआय",
+        "app_subtitle": "स्मार्ट पीक आरोग्य माहिती",
+        
+        # Home
+        "hero_title": "अॅग्रीव्हिजन एआय",
+        "hero_subtitle": "एआय-चालित पीक रोग शोध आणि उपचार शिफारस प्रणाली. आपल्या शेतांचे रक्षण करा, उत्पादन वाढवा आणि त्वरित निदान निर्णय घ्या.",
+        "core_capabilities": "मुख्य क्षमता",
+        "detection_title": "रोग शोध",
+        "detection_desc": "डीप कन्व्होल्युशनल न्यूरल नेटवर्कसह ट्रान्सफर लर्निंगचा वापर करून पानावरील विसंगतींचे विश्लेषण करा.",
+        "guidance_title": "उपचार मार्गदर्शन",
+        "guidance_desc": "त्वरित, व्यावहारिक रासायनिक आणि सेंद्रिय उपचार शिफारसी मिळवा.",
+        "prevention_title": "प्रतिबंध टिपा",
+        "prevention_desc": "भविष्यातील रोगांना प्रतिबंध करण्यासाठी पीक फिरती योजना आणि स्वच्छता खबरदारी लागू करा.",
+        "fast_analysis_title": "जलद एआय विश्लेषण",
+        "fast_analysis_desc": "स्पष्ट दृश्य प्रगती अहवालासह एका सेकंदापेक्षा कमी वेळात वर्गीकरण परिणाम मिळवा.",
+        "how_it_works": "हे कसे कार्य करते",
+        "step1_title": "पायरी १: पाण्याचे चित्र अपलोड करा",
+        "step1_desc": "संक्रमित पिकाच्या पानाचा स्पष्ट फोटो घ्या आणि तो स्कॅनरमध्ये अपलोड करा.",
+        "step2_title": "पायरी २: न्यूरल प्रोसेसिंग",
+        "step2_desc": "सिस्टम स्वयंचलितपणे प्रतिमेचे सामान्यीकरण करते आणि आमच्या फाईन-ट्यून केलेल्या MobileNetV2 मॉडेलवर परिणाम काढते.",
+        "step3_title": "पायरी ३: निदान डेटा मिळवा",
+        "step3_desc": "निदान केलेल्या रोगाचे वर्णन, विश्वासार्हता पातळी, लक्षणे आणि प्रतिबंधात्मक सूचनांचे पुनरावलोकन करा.",
+        
+        # Scan Leaf
+        "scan_title": "🔬 पीक रोग स्कॅनर",
+        "scan_subtitle": "रोगांची ओळख पटवण्यासाठी आणि औषधोपचार लोड करण्यासाठी पिकाच्या पाण्याचे चित्र (मका, बटाटा, भात, ऊस किंवा गहू) अपलोड करा.",
+        "model_offline": "❌ **एआय इन्फरन्स इंजिन ऑफलाइन**: मॉडेल फाईल गहाळ आहे. स्कॅन करण्यापूर्वी मॉडेल निर्देशिकेत ठेवा.",
+        "choose_image": "पिकाच्या पाण्याचे चित्र निवडा...",
+        "image_help": "समर्थित स्वरूपने: JPG, JPEG, PNG",
+        "uploaded_caption": "अपलोड केलेले पिकाचे पान",
+        "analyzing": "पानाच्या नमुन्यांचे विश्लेषण केले जात आहे...",
+        "status_healthy": "निरोगी",
+        "status_diseased": "रोगट / नमुना सापडला",
+        "identified_condition": "ओळखलेली पिकाची स्थिती",
+        "confidence_level": "विश्वासार्हता पातळी",
+        "tab_info": "ℹ️ रोगाची माहिती",
+        "tab_symptoms": "🔍 लक्षणे",
+        "tab_treatment": "💊 शिफारस केलेले उपचार",
+        "tab_prevention": "🛡️ प्रतिबंधात्मक टिपा",
+        "tab_shop": "🛒 उपचार खरेदी करा",
+        "desc_label": "वर्णन",
+        "symptoms_look_for": "पाहण्यासारखी लक्षणे",
+        "recommended_treatment": "शिफारस केलेले व्यावहारिक उपचार",
+        "preventative_strategies": "प्रतिबंधात्मक धोरणे",
+        "recommended_products_title": "🛒 या स्थितीसाठी शिफारस केलेले उत्पादन",
+        "recommended_products_subtitle": "या स्थितीच्या उपचारासाठी ही उत्पादने अॅग्रीव्हिजन मार्केटप्लेसमध्ये उपलब्ध आहेत:",
+        "add_to_cart": "कार्टमध्ये जोडा",
+        "buy_now": "आत्ताच खरेदी करा",
+        "added_to_cart_toast": "कार्टमध्ये {} जोडले गेले!",
+        
+        # Voice UI
+        "voice_reader_title": "🔊 ऑडिओ मार्गदर्शक",
+        "voice_play": "ऐका",
+        "voice_pause": "थांबवा",
+        "voice_stop": "बंद करा",
+        "voice_speed": "वेग",
+        "voice_mic_tooltip": "आवाजाद्वारे शोधा"
     }
 }
 

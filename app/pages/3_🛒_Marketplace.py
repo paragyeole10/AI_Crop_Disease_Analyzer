@@ -238,7 +238,17 @@ else:
                     format_func=lambda x: cat_labels[x]
                 )
             with col_f2:
-                search_query = st.text_input(t('search_placeholder'), placeholder=t('search_help'))
+                col_search, col_mic = st.columns([5, 1])
+                with col_search:
+                    search_query = st.text_input(t('search_placeholder'), placeholder=t('search_help'), key="marketplace_search_input")
+                with col_mic:
+                    st.markdown("<div style='height: 28px;'></div>", unsafe_allow_html=True)
+                    from app.components.layout import render_voice_search
+                    render_voice_search(
+                        target_placeholder=t('search_help'),
+                        language_code=st.session_state.get("language", "en"),
+                        key="marketplace_voice_search"
+                    )
             with col_f3:
                 sort_options = ["Popularity", "Price: Low to High", "Price: High to Low", "Rating"]
                 sort_labels = {

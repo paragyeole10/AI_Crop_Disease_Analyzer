@@ -8,7 +8,7 @@ from src.config import load_config, get_absolute_path
 from src.translations import t
 
 config = load_config()
-model_rel_path = config.get("model", {}).get("save_path", "models/crop_disease_model.h5")
+model_rel_path = config.get("model", {}).get("save_path", "models/mobilenet_crop_disease.keras")
 model_path = get_absolute_path(model_rel_path)
 model_exists = os.path.exists(model_path)
 

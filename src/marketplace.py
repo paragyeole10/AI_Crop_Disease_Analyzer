@@ -157,26 +157,79 @@ PRODUCTS = LocalizedProducts()
 
 # Map each class output from the disease predictor to recommended product IDs
 DISEASE_PRODUCT_MAPPING = {
-    "Pepper__bell___Bacterial_spot": ["COPPER_FUNGICIDE", "ORGANIC_COMPOST"],
-    "Pepper__bell___healthy": ["NPK_19_19_19", "EPSOM_SALT"],
-    "Potato___Early_blight": ["MANCOZEB_WP", "COPPER_FUNGICIDE"],
-    "Potato___Late_blight": ["MANCOZEB_WP", "COPPER_FUNGICIDE"],
-    "Potato___healthy": ["NPK_19_19_19", "ORGANIC_COMPOST"],
-    "Tomato_Bacterial_spot": ["COPPER_FUNGICIDE", "MANCOZEB_WP"],
-    "Tomato_Early_blight": ["MANCOZEB_WP", "COPPER_FUNGICIDE", "ORGANIC_COMPOST"],
-    "Tomato_Late_blight": ["MANCOZEB_WP", "COPPER_FUNGICIDE"],
-    "Tomato_Leaf_Mold": ["COPPER_FUNGICIDE", "SULFUR_DUST"],
-    "Tomato_Septoria_leaf_spot": ["MANCOZEB_WP", "COPPER_FUNGICIDE"],
-    "Tomato_Spider_mites_Two_spotted_spider_mite": ["NEEM_OIL_SPRAY", "SULFUR_DUST"],
-    "Tomato__Target_Spot": ["COPPER_FUNGICIDE", "MANCOZEB_WP"],
-    "Tomato__Tomato_YellowLeaf__Curl_Virus": ["NEEM_OIL_SPRAY"],
-    "Tomato__Tomato_mosaic_virus": ["ORGANIC_COMPOST", "EPSOM_SALT"],
-    "Tomato_healthy": ["NPK_19_19_19", "CALCIUM_NITRATE", "ORGANIC_COMPOST"]
+  "Corn___Common_Rust": [
+    "RUSTSHIELD_COPPER_SPRAY",
+    "TRIAZOLE_FUNGICIDE_MAX"
+  ],
+  "Corn___Gray_Leaf_Spot": [
+    "STROBILURIN_ACTIVE_250",
+    "POTASH_FERTILIZER_PREMIUM"
+  ],
+  "Corn___Healthy": [
+    "ORGANIC_SOIL_BUILDER",
+    "ALL_PURPOSE_PLANT_TONIC"
+  ],
+  "Corn___Northern_Leaf_Blight": [
+    "EXSEROHILUM_CONTROL_SPRAY",
+    "BLIGHTGUARD_PRO_FUNGICIDE"
+  ],
+  "Potato___Early_Blight": [
+    "MANCOZEB_DEFENDER_75",
+    "CHLOROTHALONIL_POWER_SPRAY"
+  ],
+  "Potato___Healthy": [
+    "POTASH_PLUS_TUBER_BOOSTER",
+    "ORGANIC_COMPOST_BOOSTER"
+  ],
+  "Potato___Late_Blight": [
+    "METALAXYL_SYSTEMIC_SPRAY",
+    "INFESTANS_BLIGHT_CONTROL"
+  ],
+  "Rice___Brown_Spot": [
+    "HEXACONAZOLE_ANTI_SPOT_SPRAY",
+    "MICRONUTRIENT_ZINC_MIX"
+  ],
+  "Rice___Healthy": [
+    "PREMIUM_PADDY_NPK_BOOST",
+    "BIO_ORGANIC_GROWTH_PROMOTER"
+  ],
+  "Rice___Leaf_Blast": [
+    "TRICYCLAZOLE_BLAST_SHIELD",
+    "KASUGAMYCIN_ORGANIC_BACTERICIDE"
+  ],
+  "Rice___Neck_Blast": [
+    "ISOPROTHIOLANE_BLAST_MASTER",
+    "NECK_BLAST_PRO_DEFENSE"
+  ],
+  "Sugarcane___Bacterial_Blight": [
+    "BACTERICIDE_COPPER_HYDROXIDE",
+    "FIELD_DISINFECTANT_LIQUID"
+  ],
+  "Sugarcane___Healthy": [
+    "SUGARCANE_SPECIAL_MICRONUTRIENTS",
+    "PREMIUM_COMPOST_FERTILIZER"
+  ],
+  "Sugarcane___Red_Rot": [
+    "TRICHODERMA_VIRIDE_BIO_FUNGICIDE",
+    "AGRICULTURAL_LIME_WASH"
+  ],
+  "Wheat___Brown_Rust": [
+    "PROPICONAZOLE_LEAF_DEFENDER",
+    "PREMIUM_TEBUCONAZOLE_SPRAY"
+  ],
+  "Wheat___Healthy": [
+    "WHEAT_MICRONUTRIENT_SUPPLEMENT",
+    "BIO_STIMULANT_SPIKES_BOOSTER"
+  ],
+  "Wheat___Yellow_Rust": [
+    "TRIADIMEFON_STRIPE_CONTROLLER",
+    "PROPICONAZOLE_ACTIVE_SPRAY"
+  ]
 }
 
 def get_recommended_products(disease_class):
     """
     Get a list of product dictionaries recommended for a specific disease class.
     """
-    product_ids = DISEASE_PRODUCT_MAPPING.get(disease_class, ["NPK_19_19_19", "ORGANIC_COMPOST"])
+    product_ids = DISEASE_PRODUCT_MAPPING.get(disease_class, ["ORGANIC_SOIL_BUILDER", "ALL_PURPOSE_PLANT_TONIC"])
     return [PRODUCTS[pid] for pid in product_ids if pid in PRODUCTS]

@@ -397,6 +397,153 @@ def inject_custom_css():
                 font-size: 0.85rem !important;
             }
         }
+        
+        /* Voice Narration Player Styling */
+        .voice-player-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            border-radius: 16px;
+            padding: 1.25rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s ease;
+        }
+        .voice-player-card:hover {
+            box-shadow: 0 8px 24px rgba(46, 125, 50, 0.08);
+            border-color: rgba(46, 125, 50, 0.3);
+        }
+        .voice-btn {
+            border: none;
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .voice-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .voice-btn.play {
+            background-color: #2E7D32;
+            color: white;
+        }
+        .voice-btn.play:hover:not(:disabled) {
+            background-color: #1B5E20;
+            transform: translateY(-1px);
+        }
+        .voice-btn.pause {
+            background-color: #F59E0B;
+            color: white;
+        }
+        .voice-btn.pause:hover:not(:disabled) {
+            background-color: #D97706;
+            transform: translateY(-1px);
+        }
+        .voice-btn.stop {
+            background-color: #EF4444;
+            color: white;
+        }
+        .voice-btn.stop:hover:not(:disabled) {
+            background-color: #DC2626;
+            transform: translateY(-1px);
+        }
+        .voice-select {
+            padding: 0.35rem 0.75rem;
+            border-radius: 8px;
+            border: 1px solid #E2E8F0;
+            background: white;
+            font-size: 0.85rem;
+            color: #1E293B;
+            font-weight: 500;
+            outline: none;
+            cursor: pointer;
+        }
+        
+        /* CSS Soundwave animation */
+        .voice-wave {
+            display: flex;
+            align-items: flex-end;
+            gap: 3px;
+            height: 24px;
+            padding: 0 4px;
+        }
+        .voice-bar {
+            width: 3px;
+            height: 4px;
+            background-color: #2E7D32;
+            border-radius: 2px;
+            transition: height 0.2s ease;
+        }
+        .voice-wave.speaking .voice-bar {
+            animation: pulse_bar 1s infinite alternate;
+        }
+        .voice-wave.speaking .bar-1 { animation-delay: 0.1s; }
+        .voice-wave.speaking .bar-2 { animation-delay: 0.3s; }
+        .voice-wave.speaking .bar-3 { animation-delay: 0.5s; }
+        .voice-wave.speaking .bar-4 { animation-delay: 0.2s; }
+        .voice-wave.speaking .bar-5 { animation-delay: 0.4s; }
+        
+        .voice-wave.paused .voice-bar {
+            background-color: #F59E0B;
+        }
+        
+        @keyframes pulse_bar {
+            0% { height: 4px; }
+            100% { height: 20px; }
+        }
+        
+        /* Microphone Button Styling */
+        .mic-btn-container {
+            display: inline-flex;
+            align-items: center;
+            margin-left: 0.5rem;
+            vertical-align: middle;
+        }
+        .mic-btn {
+            background: white;
+            border: 1px solid #E2E8F0;
+            border-radius: 50%;
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+        .mic-btn:hover {
+            border-color: #2E7D32;
+            box-shadow: 0 6px 12px rgba(46, 125, 50, 0.12);
+            transform: scale(1.05);
+        }
+        .mic-btn.recording {
+            background: #FFEBEE;
+            border-color: #EF4444;
+            color: #EF4444;
+            animation: mic_pulse 1.5s infinite;
+        }
+        
+        @keyframes mic_pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(239, 68, 68, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+            }
+        }
     </style>
     """, unsafe_allow_html=True)
 
@@ -416,8 +563,8 @@ def render_sidebar_branding():
         st.markdown(f"<p style='color: #64748B; font-size: 0.9rem;'>{t('app_subtitle')}</p>", unsafe_allow_html=True)
         
         # Language Selector
-        langs = ["en", "hi", "es"]
-        lang_labels = {"en": "English", "hi": "हिन्दी (Hindi)", "es": "Español (Spanish)"}
+        langs = ["en", "hi", "mr", "es"]
+        lang_labels = {"en": "English", "hi": "हिन्दी (Hindi)", "mr": "मराठी (Marathi)", "es": "Español (Spanish)"}
         selected_lang_idx = langs.index(st.session_state.get("language", "en"))
         
         lang_choice = st.selectbox(
@@ -435,8 +582,41 @@ def render_sidebar_branding():
         st.markdown("---")
         
         st.markdown(f"### {t('supported_crops')}")
-        st.markdown(f"- {t('crop_tomato')}")
+        st.markdown(f"- {t('crop_corn')}")
         st.markdown(f"- {t('crop_potato')}")
-        st.markdown(f"- {t('crop_pepper')}")
+        st.markdown(f"- {t('crop_rice')}")
+        st.markdown(f"- {t('crop_sugarcane')}")
+        st.markdown(f"- {t('crop_wheat')}")
         
         st.markdown(f"<div style='position: fixed; bottom: 10px; font-size: 0.8rem; color: #94A3B8;'>{t('release_version')}</div>", unsafe_allow_html=True)
+
+def render_voice_player(text_to_speak, language_code, key):
+    """
+    Renders a premium client-side Text-to-Speech audio guide.
+    """
+    import json
+    from src.translations import t
+    
+    sanitized_key = "".join(c if c.isalnum() or c == "_" else "_" for c in key)
+    text_to_speak_json = json.dumps(text_to_speak)
+    
+    html = f"""<div class="voice-player-card" id="voice-player-{sanitized_key}"><div style="display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;"><div style="display: flex; align-items: center; gap: 0.75rem;"><span style="font-size: 1.5rem;">🔊</span><div><strong style="color: #1E293B; font-size: 0.95rem;">{t('voice_reader_title')}</strong><div style="font-size: 0.75rem; color: #64748B;" id="voice-status-{sanitized_key}">Ready</div></div></div><div class="voice-wave" id="voice-wave-{sanitized_key}"><span class="voice-bar bar-1"></span><span class="voice-bar bar-2"></span><span class="voice-bar bar-3"></span><span class="voice-bar bar-4"></span><span class="voice-bar bar-5"></span></div></div><hr style="margin: 0.75rem 0; border: 0; border-top: 1px solid #E2E8F0;"><div style="display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;"><div style="display: flex; align-items: center; gap: 0.5rem;"><button class="voice-btn play" id="voice-play-{sanitized_key}" onclick="startSpeech_{sanitized_key}()">{t('voice_play')}</button><button class="voice-btn pause" id="voice-pause-{sanitized_key}" onclick="pauseSpeech_{sanitized_key}()" disabled>{t('voice_pause')}</button><button class="voice-btn stop" id="voice-stop-{sanitized_key}" onclick="stopSpeech_{sanitized_key}()" disabled>{t('voice_stop')}</button></div><div style="display: flex; align-items: center; gap: 0.5rem;"><span style="font-size: 0.8rem; color: #64748B; font-weight: 500;">{t('voice_speed')}:</span><select class="voice-select" id="voice-rate-{sanitized_key}" onchange="updateRate_{sanitized_key}()"><option value="0.8">0.8x</option><option value="1.0" selected>1.0x</option><option value="1.2">1.2x</option><option value="1.5">1.5x</option></select></div></div></div><script>(function(){{const textToSpeak={text_to_speak_json};const langCode="{language_code}";const key="{sanitized_key}";let synth=window.speechSynthesis;let utterance=null;let isPaused=false;const playBtn=document.getElementById("voice-play-"+key);const pauseBtn=document.getElementById("voice-pause-"+key);const stopBtn=document.getElementById("voice-stop-"+key);const rateSelect=document.getElementById("voice-rate-"+key);const wave=document.getElementById("voice-wave-"+key);const statusDiv=document.getElementById("voice-status-"+key);window.startSpeech_{sanitized_key}=function(){{if(isPaused){{synth.resume();isPaused=false;setSpeakingState(true);statusDiv.innerText=langCode==="hi"?"बोला जा रहा है...":(langCode==="es"?"Hablando...":"Speaking...");return;}}synth.cancel();setTimeout(function(){{utterance=new SpeechSynthesisUtterance(textToSpeak);window.activeUtterance_{sanitized_key}=utterance;const voices=synth.getVoices();let selectedVoice=null;if(langCode==="hi"){{selectedVoice=voices.find(v=>v.lang.startsWith("hi")||v.lang.includes("IN"))||null;utterance.lang="hi-IN";}}else if(langCode==="es"){{selectedVoice=voices.find(v=>v.lang.startsWith("es"))||null;utterance.lang="es-ES";}}else{{selectedVoice=voices.find(v=>v.lang.startsWith("en"))||null;utterance.lang="en-US";}}if(selectedVoice){{utterance.voice=selectedVoice;}}utterance.rate=parseFloat(rateSelect.value);utterance.onstart=function(){{setSpeakingState(true);statusDiv.innerText=langCode==="hi"?"बोला जा रहा है...":(langCode==="es"?"Hablando...":"Speaking...");}};utterance.onend=function(){{setSpeakingState(false);statusDiv.innerText=langCode==="hi"?"पूर्ण":(langCode==="es"?"Completado":"Completed");isPaused=false;}};utterance.onerror=function(e){{console.error("SpeechSynthesisUtterance error",e);setSpeakingState(false);statusDiv.innerText="Error";isPaused=false;}};synth.speak(utterance);}},100);}};window.pauseSpeech_{sanitized_key}=function(){{if(synth.speaking&&!synth.paused){{synth.pause();isPaused=true;setSpeakingState(false,true);statusDiv.innerText=langCode==="hi"?"रुका हुआ":(langCode==="es"?"Pausado":"Paused");}}}};window.stopSpeech_{sanitized_key}=function(){{synth.cancel();isPaused=false;setSpeakingState(false);statusDiv.innerText=langCode==="hi"?"रोका गया":(langCode==="es"?"Detenido":"Stopped");}};window.updateRate_{sanitized_key}=function(){{if(synth.speaking&&!isPaused){{window.startSpeech_{sanitized_key}();}}}};function setSpeakingState(speaking,pausedState=false){{if(speaking){{wave.classList.add("speaking");wave.classList.remove("paused");playBtn.disabled=true;pauseBtn.disabled=false;stopBtn.disabled=false;}}else{{wave.classList.remove("speaking");if(pausedState){{wave.classList.add("paused");playBtn.disabled=false;pauseBtn.disabled=true;stopBtn.disabled=false;}}else{{wave.classList.remove("paused");playBtn.disabled=false;pauseBtn.disabled=true;stopBtn.disabled=true;}}}}}}}})();</script>"""
+    import streamlit as st
+    st.markdown(html, unsafe_allow_html=True)
+
+def render_voice_search(target_placeholder, language_code, key, use_query_param=False, query_param_name=""):
+    """
+    Renders a Speech-to-Text microphone search button.
+    Supports either direct DOM input writing or query-parameter page reload.
+    """
+    import json
+    from src.translations import t
+    
+    sanitized_key = "".join(c if c.isalnum() or c == "_" else "_" for c in key)
+    target_placeholder_json = json.dumps(target_placeholder)
+    
+    html = f"""<div class="mic-btn-container" id="mic-container-{sanitized_key}"><button class="mic-btn" id="mic-btn-{sanitized_key}" onclick="startSpeechRecognition_{sanitized_key}()" title="{t('voice_mic_tooltip')}">🎤</button></div><script>(function(){{const key="{sanitized_key}";const targetPlaceholder={target_placeholder_json};const langCode="{language_code}";const useQuery={str(use_query_param).lower()};const queryName="{query_param_name}";const micBtn=document.getElementById("mic-btn-"+key);let recognition=null;let isRecording=false;const SpeechRecognition=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SpeechRecognition){{micBtn.style.display="none";return;}}window.startSpeechRecognition_{sanitized_key}=function(){{if(isRecording){{recognition.stop();return;}}recognition=new SpeechRecognition();recognition.continuous=false;recognition.interimResults=false;if(langCode==="hi"){{recognition.lang="hi-IN";}}else if(langCode==="es"){{recognition.lang="es-ES";}}else{{recognition.lang="en-US";}}recognition.onstart=function(){{isRecording=true;micBtn.classList.add("recording");}};recognition.onend=function(){{isRecording=false;micBtn.classList.remove("recording");}};recognition.onerror=function(event){{console.error("Speech recognition error",event.error);isRecording=false;micBtn.classList.remove("recording");}};recognition.onresult=function(event){{const transcript=event.results[0][0].transcript;console.log("Speech transcript:",transcript);if(useQuery&&queryName){{const url=new URL(window.location.href);url.searchParams.set(queryName,transcript);window.location.href=url.href;}}else{{const inputs=document.querySelectorAll('input[type="text"]');let targetInput=null;for(const input of inputs){{if(input.placeholder&&input.placeholder.toLowerCase().includes(targetPlaceholder.toLowerCase())){{targetInput=input;break;}}}}if(!targetInput&&inputs.length > 0){{targetInput=inputs[0];}}if(targetInput){{const nativeInputValueSetter=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,"value").set;if(nativeInputValueSetter){{nativeInputValueSetter.call(targetInput,transcript);}}else{{targetInput.value=transcript;}}targetInput.dispatchEvent(new Event('input',{{bubbles:true}}));targetInput.dispatchEvent(new Event('change',{{bubbles:true}}));targetInput.focus();setTimeout(()=>{{const enterEvent=new KeyboardEvent('keydown',{{key:'Enter',code:'Enter',keyCode:13,which:13,bubbles:true}});targetInput.dispatchEvent(enterEvent);}},100);}}else{{console.warn("No text input found for placeholder: ",targetPlaceholder);}}}}}};recognition.start();}};}})();</script>"""
+    import streamlit as st
+    st.markdown(html, unsafe_allow_html=True)
+
+
