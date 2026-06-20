@@ -64,7 +64,10 @@ def main():
         recs = get_recommended_products(top_class)
         print(f"\nRecommended products for top prediction '{top_class}':")
         for prod in recs:
-            print(f"- {prod['name']} ({prod['category']}): ${prod['price']}")
+            try:
+                print(f"- {prod['name']} ({prod['category']}): \u20b9{prod['price']}")
+            except UnicodeEncodeError:
+                print(f"- {prod['name']} ({prod['category']}): Rs. {prod['price']}")
             
         print("\n" + "=" * 60)
         print("   SUCCESS: Model integration fully verified!   ")

@@ -195,7 +195,7 @@ try:
 </div>
 <p style="font-size: 0.9rem; color: #475569; margin-bottom: 0.75rem;">{prod['description']}</p>
 <div style="display: flex; justify-content: space-between; align-items: center;">
-<span style="font-size: 1.15rem; font-weight: 700; color: #2E7D32;">${prod['price']:.2f}</span>
+<span style="font-size: 1.15rem; font-weight: 700; color: #2E7D32;">₹{prod['price']:.2f}</span>
 <span style="font-size: 0.85rem; color: #F59E0B; font-weight: 600;">⭐ {prod['rating']} / 5.0</span>
 </div>
 </div>""", unsafe_allow_html=True)

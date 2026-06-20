@@ -106,12 +106,19 @@ FALLBACK_PRODUCTS = {
 }
 
 class LocalizedProducts(dict):
+    def __init__(self):
+        super().__init__()
+        self._cache = {}
+
     def _get_lang_products(self):
         try:
             import streamlit as st
             lang = st.session_state.get("language", "en")
         except Exception:
             lang = "en"
+            
+        if lang in self._cache:
+            return self._cache[lang]
             
         base_dir = os.path.dirname(os.path.abspath(__file__))
         if lang == "hi":
@@ -121,13 +128,25 @@ class LocalizedProducts(dict):
         else:
             path = os.path.join(base_dir, "products.json")
             
+        products_dict = None
         if os.path.exists(path):
             try:
                 with open(path, "r", encoding="utf-8") as f:
-                    return json.load(f)
+                    products_dict = json.load(f)
             except Exception:
                 pass
-        return FALLBACK_PRODUCTS
+                
+        if products_dict is None:
+            import copy
+            products_dict = copy.deepcopy(FALLBACK_PRODUCTS)
+            
+        # Convert prices to Rupees (1 USD = 80 INR)
+        for item in products_dict.values():
+            if 'price' in item:
+                item['price'] = round(item['price'] * 80.0, 2)
+                
+        self._cache[lang] = products_dict
+        return products_dict
 
     def __getitem__(self, key):
         return self._get_lang_products()[key]

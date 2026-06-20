@@ -120,15 +120,15 @@ if st.session_state.checkout_step == "tracking":
             st.markdown(f"**{t('order_reference')}**: `{order['order_id']}`")
             for pid, qty in order['items'].items():
                 prod = PRODUCTS[pid]
-                st.markdown(f"- {prod['image']} {prod['name']} (x{qty}): **${prod['price']*qty:.2f}**")
+                st.markdown(f"- {prod['image']} {prod['name']} (x{qty}): **₹{prod['price']*qty:.2f}**")
                 
             st.markdown(f"""<div style="background: #F8FAF8; padding: 1rem; border-radius: 8px; margin-top: 0.5rem; font-size: 0.9rem;">
-<div style="display: flex; justify-content: space-between;"><span>{t('subtotal_lbl')}:</span><span>${order['subtotal']:.2f}</span></div>
-{f'<div style="display: flex; justify-content: space-between; color: #C62828;"><span>{t("discount_lbl")}:</span><span>-${order["discount"]:.2f}</span></div>' if order['discount'] > 0 else ''}
-<div style="display: flex; justify-content: space-between;"><span>{t('shipping_lbl')}:</span><span>{"FREE" if order['shipping'] == 0 else f"${order['shipping']:.2f}"}</span></div>
-<div style="display: flex; justify-content: space-between;"><span>{t('tax_lbl')}:</span><span>${order['tax']:.2f}</span></div>
+<div style="display: flex; justify-content: space-between;"><span>{t('subtotal_lbl')}:</span><span>₹{order['subtotal']:.2f}</span></div>
+{f'<div style="display: flex; justify-content: space-between; color: #C62828;"><span>{t("discount_lbl")}:</span><span>-₹{order["discount"]:.2f}</span></div>' if order['discount'] > 0 else ''}
+<div style="display: flex; justify-content: space-between;"><span>{t('shipping_lbl')}:</span><span>{"FREE" if order['shipping'] == 0 else f"₹{order['shipping']:.2f}"}</span></div>
+<div style="display: flex; justify-content: space-between;"><span>{t('tax_lbl')}:</span><span>₹{order['tax']:.2f}</span></div>
 <hr style="margin: 0.3rem 0;">
-<div style="display: flex; justify-content: space-between; font-weight: 700; color: #2E7D32;"><span>{t('grand_total_lbl')}:</span><span>${order['total']:.2f}</span></div>
+<div style="display: flex; justify-content: space-between; font-weight: 700; color: #2E7D32;"><span>{t('grand_total_lbl')}:</span><span>₹{order['total']:.2f}</span></div>
 </div>""", unsafe_allow_html=True)
             
         st.markdown("---")
@@ -192,7 +192,7 @@ else:
                     coupon_code = st.session_state.get("coupon", None)
                     discount_pct = 0.50 if coupon_code == "GROW50" else (0.20 if coupon_code == "AGRISMART" else 0.0)
                     discount = subtotal * discount_pct
-                    shipping = 5.0 if subtotal < 50 else 0.0
+                    shipping = 400.0 if subtotal < 4000 else 0.0
                     tax = (subtotal - discount) * 0.08
                     grand_total = subtotal - discount + shipping + tax
                     
@@ -309,7 +309,7 @@ else:
 </div>
 <div>
 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
-<span style="font-size: 1.25rem; font-weight: 800; color: #2E7D32;">${prod['price']:.2f}</span>
+<span style="font-size: 1.25rem; font-weight: 800; color: #2E7D32;">₹{prod['price']:.2f}</span>
 <span style="font-size: 0.85rem; color: #F59E0B; font-weight: 600;">⭐ {prod['rating']}</span>
 </div>
 </div>
@@ -345,7 +345,7 @@ else:
                 st.markdown(f"**{prod['image']} {prod['name']}**")
                 item_col1, item_col2 = st.columns([2, 1])
                 with item_col1:
-                    st.write(f"${prod['price']:.2f} x {qty} = **${item_total:.2f}**")
+                    st.write(f"₹{prod['price']:.2f} x {qty} = **₹{item_total:.2f}**")
                 with item_col2:
                     q_col1, q_col2 = st.columns(2)
                     with q_col1:
@@ -380,28 +380,28 @@ else:
                 st.session_state.coupon = None
                 
             discount = subtotal * discount_pct
-            shipping = 5.0 if subtotal < 50 else 0.0
+            shipping = 400.0 if subtotal < 4000 else 0.0
             tax = (subtotal - discount) * 0.08
             grand_total = subtotal - discount + shipping + tax
             
             st.markdown(f"""<div style="background: #F8FAF8; padding: 1rem; border-radius: 8px; margin-top: 1rem; font-size: 0.9rem;">
 <div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem;">
 <span>{t('subtotal_lbl')}:</span>
-<span>${subtotal:.2f}</span>
+<span>₹{subtotal:.2f}</span>
 </div>
-{f'<div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem; color: #C62828;"><span>{t("discount_lbl")} ({discount_pct*100:.0f}%):</span><span>-${discount:.2f}</span></div>' if discount > 0 else ''}
+{f'<div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem; color: #C62828;"><span>{t("discount_lbl")} ({discount_pct*100:.0f}%):</span><span>-₹{discount:.2f}</span></div>' if discount > 0 else ''}
 <div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem;">
 <span>{t('shipping_lbl')}:</span>
-<span>{"FREE" if shipping == 0 else f"${shipping:.2f}"}</span>
+<span>{"FREE" if shipping == 0 else f"₹{shipping:.2f}"}</span>
 </div>
 <div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem;">
 <span>{t('tax_lbl')}:</span>
-<span>${tax:.2f}</span>
+<span>₹{tax:.2f}</span>
 </div>
 <hr style="margin: 0.5rem 0;">
 <div style="display: flex; justify-content: space-between; font-weight: 800; font-size: 1.1rem; color: #2E7D32;">
 <span>{t('grand_total_lbl')}:</span>
-<span>${grand_total:.2f}</span>
+<span>₹{grand_total:.2f}</span>
 </div>
 </div>""", unsafe_allow_html=True)
             
