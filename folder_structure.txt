@@ -1,0 +1,56 @@
+========================================================================
+📂 AgriVision AI - Project Folder Structure & Layout Information
+========================================================================
+
+Plant_Disease_analyzer/
+├── .streamlit/
+│   └── config.toml             # Custom Streamlit UI theme settings & server parameters
+│
+├── assets/                     # Consolidated Static Assets (Single Source of Truth)
+│   ├── images/                 # Model evaluation plots (confusion_matrix, training_history)
+│   ├── products/               # Marketplace product images used for recommendations
+│   ├── logo.png                # Sidebar brand logo
+│   └── model_metrics.json      # Compiled training parameters and performance scores
+│
+├── app/                        # Streamlit Frontend Code
+│   ├── __init__.py
+│   ├── components/
+│   │   └── layout.py           # Core page layout, premium CSS styles, & sidebar branding
+│   └── pages/                  # Streamlit Multi-Page Scripts
+│       ├── 0_🏠_Home.py        # Welcome dashboard and features introduction
+│       ├── 1_🔬_Scan_Leaf.py   # AI Scanner interface and TTS auditory output
+│       ├── 2_📚_Disease_Library.py # Multilingual agricultural catalog explorer
+│       ├── 3_🛒_Marketplace.py  # Localized agricultural shop and order tracking
+│       └── 4_📊_Model_Analytics.py # Model performance metrics visualizer
+│
+├── src/                        # Core Backend Logic and Preprocessing Library
+│   ├── __init__.py
+│   ├── config.py               # Path resolution and YAML config loader
+│   ├── translations.py         # Multi-language translation maps
+│   ├── tts_service.py          # Google TTS audio generation service
+│   ├── helpers.py              # Knowledge base loading utilities
+│   ├── marketplace.py          # E-commerce products and mapping logic
+│   ├── prediction/
+│   │   └── predictor.py        # Keras model inference implementation
+│   └── preprocessing/
+│       └── preprocess.py       # Image resizing and normalization pipeline
+│
+├── knowledge_base/             # Multilingual disease description JSON databases
+│   ├── disease_info.json       # English profiles
+│   ├── disease_info_es.json    # Spanish profiles
+│   ├── disease_info_hi.json    # Hindi profiles
+│   └── disease_info_mr.json    # Marathi profiles
+│
+├── models/                     # Deep Learning Model Directory
+│   └── mobilenet_crop_disease.keras # Trained Keras neural network weights
+│
+├── tests/                      # Verification Tests Directory
+│   ├── test_imports.py         # Import sanity checker
+│   └── test_tts.py             # TTS functional verification test script
+│
+├── config.yaml                 # Central project configuration parameters
+├── app.py                      # Main entrypoint script for Streamlit
+├── requirements.txt            # Software dependencies list
+├── setup.py                    # Package setup script
+├── notes.txt                   # Execution and deployment notes
+└── folder_structure.txt        # Repository layout description (this file)

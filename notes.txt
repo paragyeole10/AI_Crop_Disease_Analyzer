@@ -1,0 +1,37 @@
+========================================================================
+🌱 AgriVision AI - Crop Disease Detection & Recommendation System Notes
+========================================================================
+
+1. PREREQUISITES
+----------------
+* Python Version: Python 3.11 or Python 3.12 (highly recommended).
+  WARNING: Do not use Python 3.14+ as TensorFlow does not support it yet.
+* Operating System: Windows, Linux, or macOS.
+
+2. INSTALLATION STEPS
+---------------------
+To install dependencies locally, run:
+  pip install -r requirements.txt
+
+3. RUNNING THE APPLICATION
+--------------------------
+To start the Streamlit web server locally:
+  python -m streamlit run app.py
+
+Once running, the application is accessible in your web browser at:
+  http://localhost:8501
+
+4. RUNNING TEST VERIFICATIONS
+-----------------------------
+To run the automated tests verifying imports and Text-to-Speech functionality:
+  python tests/test_imports.py
+  python tests/test_tts.py
+
+5. DEPLOYMENT ON STREAMLIT COMMUNITY CLOUD
+------------------------------------------
+When deploying to Streamlit Community Cloud (https://share.streamlit.io):
+1. Connect your GitHub repository.
+2. Under "Advanced settings", select Python version "3.12" or "3.11" (defaulting to 3.14 will cause build failures due to TensorFlow dependency).
+3. Click "Deploy".
+4. The live application will build and run. Deployed URL:
+   https://aicropdiseaseanalyzer-igmdshjcgch6hpexkxxwkz.streamlit.app/

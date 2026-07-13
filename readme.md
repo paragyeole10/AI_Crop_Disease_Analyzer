@@ -4,6 +4,8 @@
 *Department of Agricultural Engineering and Artificial Intelligence*  
 *AgriVision Research Initiative*  
 
+**Deployed Live Application**: [https://aicropdiseaseanalyzer-igmdshjcgch6hpexkxxwkz.streamlit.app/](https://aicropdiseaseanalyzer-igmdshjcgch6hpexkxxwkz.streamlit.app/)
+
 ---
 
 ### **Abstract**
