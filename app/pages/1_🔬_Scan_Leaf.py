@@ -11,7 +11,7 @@ from src.preprocessing.preprocess import preprocess_image
 from src.prediction.predictor import CropDiseasePredictor
 from src.helpers import get_disease_details
 from src.marketplace import get_recommended_products
-from utils.tts_service import TTSService, TTSServiceException
+from src.tts_service import TTSService, TTSServiceException
 
 # 2. Config & Predictor setup
 config = load_config()

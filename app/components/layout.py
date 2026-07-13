@@ -552,9 +552,10 @@ def render_sidebar_branding():
     Renders the sidebar branding elements.
     """
     from src.translations import t
+    from src.config import get_absolute_path
     
     with st.sidebar:
-        logo_path = os.path.normpath(os.path.join(os.path.dirname(os.path.dirname(__file__)), "assets", "logo.png"))
+        logo_path = get_absolute_path("assets/logo.png")
         if os.path.exists(logo_path):
             st.image(logo_path, width=80)
         else:

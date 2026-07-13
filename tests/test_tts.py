@@ -4,7 +4,7 @@ import sys
 # Add project root to sys.path
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from utils.tts_service import TTSService, TTSServiceException
+from src.tts_service import TTSService, TTSServiceException
 
 def test_tts_service():
     print("Initializing TTSService...")
